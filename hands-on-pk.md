@@ -1,37 +1,34 @@
 --- 
 layout: page
-title: "Hands-on Session on Public Key Criptography"
+title: "Hands-on Guide to PGP"
 ---
 
-# Hands-on session with PGP
-
-
-## Difference among OpenPGP, PGP and GPG
+# Differences among OpenPGP, PGP and GPG
 
 The text of this section is taken from the following [post](https://www.goanywhere.com/blog/2013/07/18/openpgp-pgp-gpg-difference).
 
-### PGP (Pretty Good Privacy)
+## PGP (Pretty Good Privacy)
 * The company, PGP Inc., owned the rights to the original PGP encryption software.
 * This software was developed by Phil Zimmermann & Associates, LLC and released in 1991 to ensure the security of files that were posted on pre-internet bulletin boards.
 * From 1997 until 2010, the software changed hands several times until it was acquired by Symantec Corp., who continues to develop the PGP brand.
 
-### OpenPGP
+## OpenPGP
 * Zimmerman, one of the original PGP developers, soon began to work on an open-source version of PGP encryption that employed encryption algorithms that had no licensing issues.
 * In 1997 he submitted an open-source PGP (OpenPGP) standards proposal to the IETF (Internet Engineering Task Force), to allow PGP standards-compliant encryption vendors to provide solutions that were compatible with other OpenPGP-compliant software vendors.
 * This strategy created an open and competitive environment for PGP encryption tools to thrive.
 * Today, OpenPGP is a standard of PGP that is open-source for public use, and the term can be used to describe any program that supports the OpenPGP system.
 
-### GPG (GNU Privacy Guard)
+## GPG (GNU Privacy Guard)
 * GnuPGP was developed by Werner Koch and released in 1999 as an alternative to what is now Symantec's software suite of encryption tools.
 * It is available as a free software download, and is based on the OpenPGP standards established by the IETF so that it would be interoperable with Symantec's PGP tools as well as OpenPGP standards.
 * Therefore, GPG can open and unencrypt any PGP and OpenPGP standards file.
 
-### Summary
+## Summary
 * OpenPGP is the IETF-approved standard that describes encryption technologies that use processes that are interoperable with PGP.
 * PGP is a proprietary encryption solution, and the rights to its software are owned by Symantec.
 * GPG is another popular solution that follows the OpenPGP standards to provide an interface for end users to easily encrypt their files.
 
-## Symmetric encryption with PGP
+# Symmetric encryption with PGP
 
 * You can use a symmetric cipher to encrypt a document.
 * The key used to drive the symmetric cipher is derived from a passphrase supplied when the document is encrypted.
@@ -53,9 +50,9 @@ To recover the original file you can decrypt it by using PGP:
 Enter passphrase: <PASSPHRASE GOES HERE>
 ```
 
-## Public-key encryption with PGP
+# Public-key encryption with PGP
 
-### Generating a new keypair
+## Generating a new keypair
 
 The command-line option `--gen-key` is used to create a new primary keypair.
 
@@ -90,7 +87,7 @@ Finally PGP needs a passphrase to protect the primary and subordinate private ke
 * From the perspective of security, the passphrase to unlock the private key is one of the weakest points in PGP.
 * Ideally, the passphrase should not use words from a dictionary and should mix the case of alphabetic characters as well as use non-alphabetic characters.
 
-### Exchanging keys
+## Exchanging keys
 
 To communicate with others you must exchange public keys.
 
@@ -105,7 +102,7 @@ uid                  Mario Rossi <mario.rossi@gmail.com>
 sub   1024R/AFB311B5 2017-10-14
 ```
 
-### Exporting a public key
+## Exporting a public key
 
 * To send your public key to a correspondent you must first export it.
 * The command-line option `--export` is used to do this.
@@ -135,7 +132,7 @@ mPno4fF7SENw+CNZ7nniEvKhuzBG92AvaiHYG1eHAwtXnIYUAhb+SR0JSP6KAQ==
 -----END PGP PUBLIC KEY BLOCK-----
 ```
 
-### Importing a public key
+## Importing a public key
 
 A public key may be added to your public keyring with the --import option.
 
@@ -205,7 +202,7 @@ sig!       9E98BC16 1999-06-04   [self-signature]
 sig!       BB7576AC 1999-06-04   Alice (Judge) <alice@cyb.org>
 ```
 
-### Encrypting and decrypting documents
+## Encrypting and decrypting documents
 
 To decrypt a message the option `--encrypt` is used.
 ```
@@ -226,7 +223,7 @@ user: "Blake (Executioner) <blake@cyb.org>"
 1024-bit ELG-E key, ID 5C8CBD41, created 1999-06-04 (main key ID 9E98BC16)
 ```
 
-### Making and verifying signatures
+## Making and verifying signatures
 
 * A digital signature certifies and timestamps a document. If the document is subsequently modified in any way, a verification of the signature will fail. 
 * A signature is created using the private key of the signer. The signature is verified using the corresponding public key. 
@@ -254,7 +251,7 @@ gpg: Signature made Fri Jun  4 12:02:38 1999 CDT using DSA key ID BB7576AC
 gpg: Good signature from "Alice (Judge) <alice@cyb.org>"
 ```
 
-### Clearsigned documents
+## Clearsigned documents
 
 * A common use of digital signatures is to sign email messages.
 * In such situations it is undesirable to compress the document while signing it.
@@ -281,7 +278,7 @@ oCoAoOuqpRqEzr4kOkQqHRLE/b8/Rw2k
 -----END PGP SIGNATURE-----
 ```
 
-### Detached signatures
+## Detached signatures
 
 A detached signature is created using the `--detach-sig` option.
 ```
