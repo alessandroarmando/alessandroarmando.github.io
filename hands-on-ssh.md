@@ -1,6 +1,6 @@
 --- 
 layout: page
-title: "Hands-on Session on SSH"
+title: "How to establis an SSH connection"
 ---
 
 ## Establishing a SSH connection with a host
