@@ -152,14 +152,14 @@ mPno4fF7SENw+CNZ7nniEvKhuzBG92AvaiHYG1eHAwtXnIYUAhb+SR0JSP6KAQ==
 A public key may be added to your public keyring with the --import option.
 
 ```
-alice% gpg --import blake.gpg
+alice> gpg --import blake.gpg
 gpg: key 9E98BC16: public key imported
 gpg: Total number processed: 1
 gpg:               imported: 1
 ```
 
 ```
-alice% gpg --list-keys
+alice> gpg --list-keys
 /users/alice/.gnupg/pubring.gpg
 ---------------------------------------
 pub  1024D/BB7576AC 1999-06-04 Alice (Judge) <alice@cyb.org>
@@ -176,7 +176,7 @@ sub  1024g/5C8CBD41 1999-06-04
 * You can even certify the validity of the key by signing it.
 
 ```
-alice% gpg --edit-key blake@cyb.org
+alice> gpg --edit-key blake@cyb.org
 pub  1024D/9E98BC16  created: 1999-06-04 expires: never      trust: -/q
 sub  1024g/5C8CBD41  created: 1999-06-04 expires: never     
 (1)  Blake (Executioner) <blake@cyb.org>
@@ -221,7 +221,7 @@ sig!       BB7576AC 1999-06-04   Alice (Judge) <alice@cyb.org>
 
 To decrypt a message the option `--encrypt` is used.
 ```
-alice% gpg --output doc.gpg --encrypt --recipient blake@cyb.org doc
+alice> gpg --output doc.gpg --encrypt --recipient blake@cyb.org doc
 ```
 * The `--recipient` option is used once for each recipient and takes an extra argument specifying the public key to which the document should be encrypted.
 * The encrypted document can only be decrypted by someone with a private key that complements one of the recipients' public keys.
@@ -231,7 +231,7 @@ alice% gpg --output doc.gpg --encrypt --recipient blake@cyb.org doc
 * You need the private key to which the message was encrypted. 
 
 ```
-blake% gpg --output doc --decrypt doc.gpg
+blake> gpg --output doc --decrypt doc.gpg
 
 You need a passphrase to unlock the secret key for
 user: "Blake (Executioner) <blake@cyb.org>"
@@ -245,7 +245,7 @@ user: "Blake (Executioner) <blake@cyb.org>"
 * The command-line option `--sign` is used to make a digital signature. The document to sign is input, and the signed document is output.
 
 ```
-alice% gpg --output doc.sig --sign doc
+alice> gpg --output doc.sig --sign doc
 
 You need a passphrase to unlock the private key for
 user: "Alice (Judge) <alice@cyb.org>"
@@ -261,7 +261,7 @@ Enter passphrase:
 * The signed document to verify and recover is input and the recovered document is output.
 
 ```
-blake% gpg --output doc --decrypt doc.sig
+blake> gpg --output doc --decrypt doc.sig
 gpg: Signature made Fri Jun  4 12:02:38 1999 CDT using DSA key ID BB7576AC
 gpg: Good signature from "Alice (Judge) <alice@cyb.org>"
 ```
@@ -273,7 +273,7 @@ gpg: Good signature from "Alice (Judge) <alice@cyb.org>"
 * The option `--clearsign` causes the document to be wrapped in an ASCII-armored signature but otherwise does not modify the document.
 
 ```
-alice% gpg --clearsign doc
+alice> gpg --clearsign doc
 
 You need a passphrase to unlock the secret key for
 user: "Alice (Judge) <alice@cyb.org>"
@@ -297,7 +297,7 @@ oCoAoOuqpRqEzr4kOkQqHRLE/b8/Rw2k
 
 A detached signature is created using the `--detach-sig` option.
 ```
-alice% gpg --output doc.sig --detach-sig doc
+alice> gpg --output doc.sig --detach-sig doc
 
 You need a passphrase to unlock the secret key for
 user: "Alice (Judge) <alice@cyb.org>"
@@ -306,7 +306,7 @@ user: "Alice (Judge) <alice@cyb.org>"
 Enter passphrase: 
 Both the document and detached signature are needed to verify the signature. The --verify option can be to check the signature.
 
-blake% gpg --verify doc.sig doc
+blake> gpg --verify doc.sig doc
 gpg: Signature made Fri Jun  4 12:38:46 1999 CDT using DSA key ID BB7576AC
 gpg: Good signature from "Alice (Judge) <alice@cyb.org>"
 ```
