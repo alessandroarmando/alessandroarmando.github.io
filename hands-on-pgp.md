@@ -53,6 +53,11 @@ To recover the original file you can decrypt it by using PGP:
 > gpg --output doc.txt --decrypt doc.gpg
 Enter passphrase: <PASSPHRASE GOES HERE>
 ```
+### Exercise
+1. Create a file named `secret-message.txt` in your home directory and write the string "All work and no play makes Jack a dull boy.".
+2. Encrypt the file `secret-message.txt` using "Il mattino ha l'oro in bocca." as a passphase.  The encrypted message should be stored in the file `secret-message.enc` in your home directory.
+3. Delete del file `secret-message.txt` from your home directory.
+
 
 ## Public-key encryption with PGP
 
@@ -90,6 +95,7 @@ Finally PGP needs a passphrase to protect the primary and subordinate private ke
 * There is no limit on the length of a passphrase, and it should be carefully chosen.
 * From the perspective of security, the passphrase to unlock the private key is one of the weakest points in PGP.
 * Ideally, the passphrase should not use words from a dictionary and should mix the case of alphabetic characters as well as use non-alphabetic characters.
+
 
 ### Exchanging keys
 
@@ -135,6 +141,11 @@ mPno4fF7SENw+CNZ7nniEvKhuzBG92AvaiHYG1eHAwtXnIYUAhb+SR0JSP6KAQ==
 =AWyM
 -----END PGP PUBLIC KEY BLOCK-----
 ```
+
+### Exercise
+1. You must create a new key pair for personal use. Use your real name and a valid email address when asked to do so by PGP.
+2. Choose your own passphrase to protect the private key and do not share it with anyone else!
+3. Export the public key and save it to a file named `*matricola*.puk` in you home directory, where \*matricola\* is your UNIGE id number.
 
 ### Importing a public key
 
