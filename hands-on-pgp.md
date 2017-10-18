@@ -149,7 +149,7 @@ mPno4fF7SENw+CNZ7nniEvKhuzBG92AvaiHYG1eHAwtXnIYUAhb+SR0JSP6KAQ==
 
 ### Importing a public key
 
-A public key may be added to your public keyring with the --import option.
+A public key may be added to your public keyring with the `--import` option. (In the sequel we  write `user> command` to indicate that `command` is executed by `user`.)
 
 ```
 alice> gpg --import blake.gpg
@@ -310,3 +310,4 @@ blake> gpg --verify doc.sig doc
 gpg: Signature made Fri Jun  4 12:38:46 1999 CDT using DSA key ID BB7576AC
 gpg: Good signature from "Alice (Judge) <alice@cyb.org>"
 ```
+
