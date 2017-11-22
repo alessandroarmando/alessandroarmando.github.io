@@ -14,7 +14,7 @@ You can start playing with a Linux shell straight away by using [JSLinux](https:
 
 ### 1.2 Accessing a remote Linux host via SSH
 
-Prerequisite: SSH client installed on your machine. SSH is pre-installed in most Linux distributions or it can easily installed via the `apt` command. SSH client for Windows are available [here](http://www.putty.org/).
+Prerequisite: SSH client installed on your machine. SSH is pre-installed in most Linux distributions or it can easily installed via the `apt` command. SSH client for Windows are available [here](http://www.putty.org/) and [here](https://www.chiark.greenend.org.uk/~sgtatham/putty/). 
 
 If you have a Linux machine, then you can establish a SSH session by issuing the the following command on a terminal:
 
