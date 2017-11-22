@@ -57,4 +57,47 @@ Learn to use and play with the following commands:
 
 Improve your hands-on skills by taking on the [Bandit](http://overthewire.org/wargames/bandit/) challenges.
 
+## 4. Advanced Linux shell commands
+
+ * Standard Input, Output, And Error
+ * I/O Redirection
+   - Redirecting Standard Output
+
+     * ``ls -l /usr/bin > ls-output.txt``
+     * ```
+     > ls-output.txt
+     ls -l /usr/bin >> ls-output.txt
+     ls -l /usr/bin >> ls-output.txt
+     ls -l /usr/bin >> ls-output.txt
+```
+   - Redirecting Standard Error
+     * ``ls -l /bin/usr > ls-output.txt``
+     * ```ls -l /bin/usr 2> ls-error.txt```
+   - Redirecting Standard Output And Standard Error To One File
+     * ``ls -l /bin/usr > ls-output.txt 2>&1``
+     * ``ls -l /bin/usr &> ls-output.txt``
+     * ``ls -l /bin/usr &>> ls-output.txt``
+   - Disposing Of Unwanted Output
+     * ``ls -l /bin/usr 2> /dev/null``
+   - Redirecting Standard Input
+     * ```
+       wget http://csec.it/events/boeing-ctf/photos/boeing1.jpg
+       ls -la boeing1.jpg
+       split --bytes=10000 boeing1.jpg
+       ls -la x*
+       diff boeing1.jpg xaa
+       cat x?? > new-boeing1.jpg
+       diff boeing1.jpg new-boeing1.jpg
+       ```
+     * ```
+       cat ls-output.txt
+       cat
+       cat > readme.txt
+       cat < readme.txt
+       ```
+ * Pipelines
+   - Filters
+     * ``ls /bin /usr/bin | sort | less``
+   - Read From Stdin And Output To Stdout And Files
+     * ``ls /usr/bin | tee ls.txt | grep zip``
 
