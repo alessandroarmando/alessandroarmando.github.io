@@ -55,7 +55,7 @@ Upon creation, each thread executes a *thread function*:
 * This is an ordinary function that contains the code that the thread should run.
 * Thread functions take a single parameter, of type `void *` and have a `void *` return type.  For example
 ```
-void* print_xs (void* c) {
+void* print_c (void* c) {
   char *pch=(char *)c; // type casting
   while (1)
     fputc (*pch, stdout);
