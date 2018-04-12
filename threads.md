@@ -126,3 +126,22 @@ If you don’t care about the thread return value, pass NULL as the second argum
 The correct version of the previous program is available [here](code/thread_create_ok.c).  
 
 ## 3. Synchronization and Critical Sections
+
+Programming with threads is very tricky because most threaded programs are concurrent programs. 
+
+There’s no way to know when the system will schedule one thread to run and when it will run another. One thread might run for a very long time, or the system might switch among threads very quickly.
+
+On a system with multiple processors, the system might even schedule multiple threads to run the same time.
+
+Debugging a threaded program is difficult because you cannot always easily reproduce the behavior that caused the problem.
+
+You might run the program once and have everything work fine; the next time you run it, it might crash. There’s no way to make the system schedule the threads exactly the same way it did before.
+
+The ultimate cause of most bugs involving threads is that the threads are accessing
+the same resource (data, device, ...).
+
+Tis iss one of the powerful aspects of threads, but it is also dangerous.
+
+If one thread is only partway through updating a data structure when another thread accesses the same data structure, chaos is likely to ensue.
+
+Consider the following program:
