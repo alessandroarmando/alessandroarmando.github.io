@@ -6,7 +6,7 @@ title: "Calcolatori Elettronici (a.y. 2017-2018) - Linux Threads"
 # Calcolatori Elettronici (a.y. 2017-2018) - Linux Threads
 
 
-## 1. Introduction to Threads
+## 1. Introduction
 
 As with processes the Linux kernel schedules threads asynchronously, interrupting each thread from time to time to give others a chance to execute.
 
@@ -29,22 +29,50 @@ space, file descriptors, and other system resources as the original.
 
 If one thread changes the value of a variable, for instance, the other thread subsequently will see the modified value.
 
-Similarly, if one thread closes a file descriptor, other threads may not read from or write to that file descriptor. Because a process and all its threads can be executing only one program at a time, if any thread inside a process calls one of the `exec` functions, all the other threads are ended (the new program may, of course, create new threads).
+Similarly, if one thread closes a file descriptor, other threads may not read from or write to that file descriptor.
 
-### 1.1 A Zero footprint Linux shell
+Because a process and all its threads can be executing only one program at a time, if any thread inside a process calls one of the `exec` functions, all the other existing threads are ended.
 
-You can start playing with a Linux shell straight away by using [JSLinux](https://bellard.org/jslinux/).  No installation on your machine is needed.  A Linux shell (albeit limited in functionality) is made avalable in your browser.
+## 2 Thread Creation
 
-### 1.2 Accessing a remote Linux host via SSH
+Each thread in a process is identified by a thread ID. When referring to thread IDs in
+C or C++ programs, use the type `pthread_t`.
 
-Prerequisite: SSH client installed on your machine. SSH is pre-installed in most Linux distributions or it can easily installed via the `apt` command. SSH client for Windows are available [here](http://www.putty.org/) and [here](https://www.chiark.greenend.org.uk/~sgtatham/putty/). 
+### 2.1 Thread Functions
 
-If you have a Linux machine, then you can establish a SSH session by issuing the the following command on a terminal:
-
+Upon creation, each thread executes a *thread function*:
+* This is an ordinary function that contains the code that the thread should run.
+* Thread functions take a single parameter, of type `void *` and have a `void *` return type.  For example
 ```
-> ssh -p 2220 -l bandit0 bandit.labs.overthewire.org
+void* print_xs (void* c) {
+  char *pch=(char *)c; // type casting
+  while (1)
+    fputc (*pch, stdout);
+  return NULL;
+}
 ```
-where `bandit.labs.overthewire.org` is the address of the remote host, `-p 2220` specified the port, and `-l bandit0` specifies the account on the host. (The password for bandit0 on bandit.labs.overthewire.org is ... bandit0).
+* The parameter is the thread argument: the OS passes the value from the calling thread to the called thread without looking at it.
+* When the thread function returns, the thread exits.
+
+The `pthread_create` function creates a new thread. The function requires as input:
+
+1. A pointer to a pthread_t variable, in which the thread ID of the new thread is
+stored.
+2. A pointer to a thread attribute object.This object controls details of how the
+thread interacts with the rest of the program. If you pass NULL as the thread
+attribute, a thread will be created with the default thread attributes.
+3. A pointer to the thread function. 
+4. A thread argument value of type `void *`. Whatever you pass is simply passed as
+the argument to the thread function when the thread begins executing.
+
+A call to `pthread_create` returns immediately, and the original thread continues executing the instructions following the call.
+
+Meanwhile, the new thread begins executing the thread function.
+
+Linux schedules both threads asynchronously, and your program
+must not rely on the relative order in which instructions are executed in the two
+threads.
+
 
 ### 1.3 Installing a Linux distribution on your machine
 
