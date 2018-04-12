@@ -142,6 +142,4 @@ the same resource (data, device, ...).
 
 Tis iss one of the powerful aspects of threads, but it is also dangerous.
 
-If one thread is only partway through updating a data structure when another thread accesses the same data structure, chaos is likely to ensue.
-
-Consider the following program:
+If one thread is only partway through updating a data structure when another thread accesses the same data structure, chaos is likely to ensue exemplified by the following [program](code/thread_arrows.c).
