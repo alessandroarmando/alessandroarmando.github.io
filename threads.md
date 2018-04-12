@@ -44,7 +44,7 @@ The pthread functions are not included in the standard C library. Instead, they 
 program.
 
 
-## 2 Dealing with Threads
+## 2. Dealing with Threads
 
 Each thread in a process is identified by a thread ID. When referring to thread IDs in
 C or C++ programs, use the type `pthread_t`.
@@ -124,3 +124,5 @@ If you don’t care about the thread return value, pass NULL as the second argum
 
 ### Example (correct)
 The correct version of the previous program is available [here](code/thread_create_ok.c).  
+
+## 3. Synchronization and Critical Sections
