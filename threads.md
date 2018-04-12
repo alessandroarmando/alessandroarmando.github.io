@@ -33,12 +33,23 @@ Similarly, if one thread closes a file descriptor, other threads may not read fr
 
 Because a process and all its threads can be executing only one program at a time, if any thread inside a process calls one of the `exec` functions, all the other existing threads are ended.
 
-## 2 Thread Creation
+### 1.1. Posix Standard Thread API (pthreads)
+
+Linux implements the POSIX standard thread API (pthreads).
+
+All thread functions and data types are declared in the header file `<pthread.h>`.
+
+The pthread functions are not included in the standard C library. Instead, they are in
+`libpthread`, so you should add `-lpthread` to the command line when you link your
+program.
+
+
+## 2 Dealing with Threads
 
 Each thread in a process is identified by a thread ID. When referring to thread IDs in
 C or C++ programs, use the type `pthread_t`.
 
-### 2.1 Thread Functions
+### 2.1 Thread Function
 
 Upon creation, each thread executes a *thread function*:
 * This is an ordinary function that contains the code that the thread should run.
@@ -51,104 +62,65 @@ void* print_xs (void* c) {
   return NULL;
 }
 ```
-* The parameter is the thread argument: the OS passes the value from the calling thread to the called thread without looking at it.
 * When the thread function returns, the thread exits.
 
-The `pthread_create` function creates a new thread. The function requires as input:
+### 2.2 Thread Creation
 
-1. A pointer to a pthread_t variable, in which the thread ID of the new thread is
-stored.
-2. A pointer to a thread attribute object.This object controls details of how the
-thread interacts with the rest of the program. If you pass NULL as the thread
-attribute, a thread will be created with the default thread attributes.
-3. A pointer to the thread function. 
-4. A thread argument value of type `void *`. Whatever you pass is simply passed as
-the argument to the thread function when the thread begins executing.
+The `pthread_create` function creates a new thread.
+```
+int pthread_create(pthread_t *thread,
+                   const pthread_attr_t *attr,
+		   void *(*thread_function) (void *),
+		   void *arg);
+```
+where the arguments are:
+1. A pointer to the thread ID of the new thread.
+2. A pointer to the thread function. 
+3. A pointer to a thread attribute object. This object controls details of how the thread interacts with the rest of the program. (NULL to set default thread attributes.
+4. A thread argument value of type `void *`. 
 
-A call to `pthread_create` returns immediately, and the original thread continues executing the instructions following the call.
+The call to `pthread_create` returns immediately, and the original thread continues executing the instructions following the call.
 
 Meanwhile, the new thread begins executing the thread function.
 
-Linux schedules both threads asynchronously, and your program
-must not rely on the relative order in which instructions are executed in the two
-threads.
+Linux schedules both threads asynchronously, and your program MUST NOT rely on the relative order in which instructions are executed in the two threads.
 
-
-### 1.3 Installing a Linux distribution on your machine
-
-You can create a local, disposable copy of Linux by using the virtualization technology.  Many virtualization solutions are available today, the most prominent being [VMware](https://www.vmware.com) and [VirtualBox](https://www.virtualbox.org/).
-
-## 2. Basic Linux shell commands
-
-Learn to use and play with the following commands:
-
-* pwd - Print name of current working directory
-* cd - Change directory
-* ls - List directory contents
-* file - Determine file type
-* less - View file contents
-* cp - Copy files and directories
-* mv - Move/rename files and directories
-* mkdir - Create directories
-* rm - Remove files and directories
-* which - Display which executable program will be executed
-* man - Display a command's manual page
-* whatis - Display a very brief description of a command
-* cat - Concatenate files
-* sort - Sort lines of text
-* uniq - Report or omit repeated lines
-* grep - Print lines matching a pattern
-* find - Find...
-* wc - Print newline, word, and byte counts for each file
-* head - Output the first part of a file
-* tail - Output the last part of a file
-* tee - Read from standard input and write to standard output and files
-
-## 3. Play with Bandit
-
-Improve your hands-on skills by taking on the [Bandit](http://overthewire.org/wargames/bandit/) challenges.
-
-## 4. Advanced Linux shell commands
-
- * Standard Input, Output, And Error
- * I/O Redirection
-   - Redirecting Standard Output
-
-     * ``ls -l /usr/bin > ls-output.txt``
-     * ```
-     > ls-output.txt
-     ls -l /usr/bin >> ls-output.txt
-     ls -l /usr/bin >> ls-output.txt
-     ls -l /usr/bin >> ls-output.txt
 ```
-   - Redirecting Standard Error
-     * ``ls -l /bin/usr > ls-output.txt``
-     * ```ls -l /bin/usr 2> ls-error.txt```
-   - Redirecting Standard Output And Standard Error To One File
-     * ``ls -l /bin/usr > ls-output.txt 2>&1``
-     * ``ls -l /bin/usr &> ls-output.txt``
-     * ``ls -l /bin/usr &>> ls-output.txt``
-   - Disposing Of Unwanted Output
-     * ``ls -l /bin/usr 2> /dev/null``
-   - Redirecting Standard Input
-     * ```
-       wget http://csec.it/events/boeing-ctf/photos/boeing1.jpg
-       ls -la boeing1.jpg
-       split --bytes=10000 boeing1.jpg
-       ls -la x*
-       diff boeing1.jpg xaa
-       cat x?? > new-boeing1.jpg
-       diff boeing1.jpg new-boeing1.jpg
-       ```
-     * ```
-       cat ls-output.txt
-       cat
-       cat > readme.txt
-       cat < readme.txt
-       ```
- * Pipelines
-   - Filters
-     * ``ls /bin /usr/bin | sort | less``
-   - Read From Stdin And Output To Stdout And Files
-     * ``ls /usr/bin | tee ls.txt | grep zip``
+int main () {
+    pthread_t thread_id;
+    char ch='x';
+    char *pchar=&ch;
 
+    pthread_create(&thread_id, NULL, &print_xs, pchar);
+
+    while (1)
+        fputc ('.', stdout);
+    return 0;
+}
+```
+
+### Example
+The complete program is available [here](code/thread_create.c).  It creates a thread that prints x’s continuously to standard error while the main thread prints o’s continuously to standard error.
+
+The program can be compiled and link using the following command:
+```
+% gcc -o thread-create thread-create.c -lpthread
+```
+
+### 2.3 Joining Threads
+
+The program has an important bug though.  Can you spot it?
+
+*Key Question:* What happens is the main terminates before the newly created thread?
+
+One solution is to force main to wait until the thread is done.
+
+What we need is a function that waits for a thread to finish.
+
+`pthread_join` takes two arguments:
+* the thread ID of the thread to wait for
+* a pointer to a `void *` variable that will receive the finished thread’s return value.
+If you don’t care about the thread return value, pass NULL as the second argument.
+
+### Example (correct)
+The correct version of the previous program is available [here](code/thread_create_ok.c).  
