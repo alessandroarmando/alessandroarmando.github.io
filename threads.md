@@ -144,9 +144,53 @@ Tis iss one of the powerful aspects of threads, but it is also dangerous.
 
 If one thread is only partway through updating a data structure when another thread accesses the same data structure, chaos is likely to ensue.
 
-### Example
+### Example: Interleaved Arrows
 The following [program](code/thread_arrows.c) should print an alternate sequences of arrows, but it is obviously flawed. Why?
 
 We need a way to grant each exclusive access to stdout.
 
 How can this be achieved?
+
+### 3.1 Mutexes
+
+A *mutex* (MUTual EXclusion locks) is a special lock that only one thread may lock at a time.
+
+If a thread locks a mutex and then a second thread also tries to lock the same mutex, the second thread is blocked, or put on hold.
+
+Only when the first thread unlocks the mutex is the second thread unblocked, i.e. allowed to resume execution.
+
+To create a mutex, create a variable of type `pthread_mutex_t` and pass a pointer to
+it to `pthread_mutex_init`.
+```
+int pthread_mutex_init(pthread_mutex_t *restrict mutex,const pthread_mutexattr_t *restrict attr);
+```
+The second argument is a pointer to a mutex attribute object, which specifies attributes of the mutex. (If NULL, default attributes are assumed.)
+
+For instance,
+```
+pthread_mutex_t mutex;
+pthread_mutex_init (&mutex, NULL);
+```
+
+Another simpler way to create a mutex with default attributes is to initialize it
+with the special value `PTHREAD_MUTEX_INITIALIZER`:
+```
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+```
+
+A thread may attempt to lock a mutex by calling `pthread_mutex_lock` on it:
+* If the mutex was unlocked, it becomes locked and the function returns immediately.
+* If the mutex was locked by another thread, `pthread_mutex_lock` blocks execution and
+returns only eventually when the mutex is unlocked by the other thread.
+
+More than one thread may be blocked on a locked mutex at one time.
+
+When the mutex is unlocked, only one of the blocked threads (chosen unpredictably) is unblocked and allowed to lock the mutex; the other threads stay blocked.
+
+A call to `pthread_mutex_unlock` unlocks a mutex.
+This function should always be called from the same thread that locked the mutex.
+
+
+### Example: Interleaved Arrows (correct)
+The correct version of the previous program is available [here](code/thread_create_ok.c).  
+
