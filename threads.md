@@ -190,8 +190,44 @@ A call to `pthread_mutex_unlock` unlocks a mutex.
 This function should always be called from the same thread that locked the mutex.
 
 
-### Example: Interleaved Arrows (correct)
-The correct version of the previous program is available [here](code/thread_create_ok.c).  
+### Example: Interleaved Arrows (correct version using mutexes)
+The correct version of the previous program using mutexes is available [here](code/thread_arrows_mutex.c).  
 
 ### 3.2 Semaphores
+
+A semaphore is a counter that can be used to synchronize multiple threads. As with a mutex, Linux guarantees that checking or modifying the value of a semaphore can be done safely, without creating a race condition.
+
+Each semaphore has a counter value, which is a non-negative integer.
+
+A semaphore supports two basic operations:
+* A wait operation  decrements the value of the semaphore by 1. If the value is
+already zero, the operation blocks until the value of the semaphore becomes
+positive (due to the action of some other thread). When the semaphore’s value
+becomes positive, it is decremented by 1 and the wait operation returns.
+* A post operation increments the value of the semaphore by 1. If the semaphore
+was previously zero and other threads are blocked in a wait operation on that
+semaphore, one of those threads is unblocked and its wait operation completes
+(which brings the semaphore’s value back to zero).
+
+Linux provides two slightly different semaphore implementations.
+* The one we describe here is the POSIX standard semaphore implementation. Use
+these semaphores when communicating among threads.
+* The other implementation is used for communication among processes. (But we won't consider them here.)
+
+To use semaphores, you must include `<semaphore.h>`.
+
+A semaphore is represented by a `sem_t` variable.  Before using it, you must initialize it using the `sem_init` function, passing a pointer to the `sem_t` variable. The second parameter should be zero, and the third parameter is the semaphore’s initial value.
+If you no longer need a semaphore, it’s good to deallocate it with `sem_destroy`.
+
+```
+sem_t s; // definition
+sem_init(&s,0,1); // initialization
+sem_wait(&s); // wait
+sem_post(&s); // post/signal
+```
+
+### Example: Interleaved Arrows (correct version using semaphores)
+The correct version of the previous program using semaphores is available [here](code/thread_arrows_semaphores.c).  
+
+
 
