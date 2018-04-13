@@ -55,7 +55,7 @@ Upon creation, each thread executes a *thread function*:
 * This is an ordinary function that contains the code that the thread should run.
 * Thread functions take a single parameter, of type `void *` and have a `void *` return type.  For example
 ```
-void* print_c (void* c) {
+void* print_cs (void* c) {
   char *pch=(char *)c; // type casting
   while (1)
     fputc (*pch, stdout);
@@ -76,7 +76,7 @@ int pthread_create(pthread_t *thread,
 where the arguments are:
 1. A pointer to the thread ID of the new thread.
 2. A pointer to the thread function. 
-3. A pointer to a thread attribute object. This object controls details of how the thread interacts with the rest of the program. (NULL to set default thread attributes.
+3. A pointer to a thread attribute object. This object controls details of how the thread interacts with the rest of the program. (NULL to set default thread attributes.)
 4. A thread argument value of type `void *`. 
 
 The call to `pthread_create` returns immediately, and the original thread continues executing the instructions following the call.
@@ -91,7 +91,7 @@ int main () {
     char ch='x';
     char *pchar=&ch;
 
-    pthread_create(&thread_id, NULL, &print_xs, pchar);
+    pthread_create(&thread_id, NULL, &print_cs, pchar);
 
     while (1)
         fputc ('.', stdout);
@@ -140,9 +140,7 @@ You might run the program once and have everything work fine; the next time you 
 The ultimate cause of most bugs involving threads is that the threads are accessing
 the same resource (data, device, ...).
 
-Tis iss one of the powerful aspects of threads, but it is also dangerous.
-
-If one thread is only partway through updating a data structure when another thread accesses the same data structure, chaos is likely to ensue.
+This is one of the powerful aspects of threads, but it is also dangerous: If one thread is only partway through updating a data structure when another thread accesses the same data structure, chaos is likely to ensue.
 
 ### Example: Interleaved Arrows
 The following [program](code/thread_arrows.c) should print an alternate sequences of arrows, but it is obviously flawed. Why?
@@ -162,7 +160,8 @@ Only when the first thread unlocks the mutex is the second thread unblocked, i.e
 To create a mutex, create a variable of type `pthread_mutex_t` and pass a pointer to
 it to `pthread_mutex_init`.
 ```
-int pthread_mutex_init(pthread_mutex_t *restrict mutex,const pthread_mutexattr_t *restrict attr);
+int pthread_mutex_init(pthread_mutex_t *restrict mutex,
+    	               const pthread_mutexattr_t *restrict attr);
 ```
 The second argument is a pointer to a mutex attribute object, which specifies attributes of the mutex. (If NULL, default attributes are assumed.)
 
@@ -193,4 +192,6 @@ This function should always be called from the same thread that locked the mutex
 
 ### Example: Interleaved Arrows (correct)
 The correct version of the previous program is available [here](code/thread_create_ok.c).  
+
+### 3.2 Semaphores
 
