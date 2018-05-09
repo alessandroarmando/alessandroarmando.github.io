@@ -136,4 +136,4 @@ removed.
 The following [program](code/shm.c) makes use of shared memory.
 
 ### Example: Client-Server
-The implementation of the following [client](code/shmclient.c) and [server](shmserver.c) makes also use of shared memory.
+The implementation of the following [client](code/shmclient.c) and [server](code/shmserver.c) makes also use of shared memory.
