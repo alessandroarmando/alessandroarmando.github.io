@@ -23,10 +23,8 @@ int main() {
 
     if ((shmid = shmget(key, MAXSIZE, IPC_CREAT | 0666)) < 0)
         die("shmget");
-
     if ((shm = (char *)shmat(shmid, NULL, 0)) == (char *)0)
         die("shmat");
-
     /*
      *      * Put some things into the memory for the
      *        other process to read.
@@ -35,7 +33,7 @@ int main() {
 
     for (c = 'a'; c <= 'z'; c++)
         *s++ = c;
-
+    *s='\0';
 
     /*
      * Wait until the other process
