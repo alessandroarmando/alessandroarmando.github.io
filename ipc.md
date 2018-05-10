@@ -202,3 +202,28 @@ value:15
 30
 ```
 
+## 1.3. Pipes
+
+A pipe is a communication device that permits unidirectional communication:
+- Data written to the “write end” of the pipe is read back from the “read end.”
+- Pipes are serial devices: the data is always read from the pipe in the same order it was written.
+- Typically, a pipe is used to communicate between two threads in a single process or
+between parent and child processes.
+
+In a shell, the symbol `|` creates a pipe. For example, this shell command causes the shell to produce two child processes, one for `ls` and one for `less`:
+```
+> ls | less
+```
+The shell also creates a pipe connecting the standard output of the `ls` subprocess with
+the standard input of the `less` process.
+
+The filenames listed by `ls` are sent to less in exactly the same order as if they were sent directly to the terminal.
+
+A pipe’s data capacity is limited:
+- If the writer process writes faster than the reader
+process consumes the data, and if the pipe cannot store more data, the writer process
+blocks until more capacity becomes available.
+- If the reader tries to read but no data is
+available, it blocks until data becomes available.
+
+Thus, the pipe automatically synchronizes the two processes.
