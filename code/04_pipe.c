@@ -7,8 +7,7 @@
 /* Write COUNT copies of MESSAGE to STREAM, 
  * pausing for a second between each. 
  */
-void writer(const char* message, int count, FILE* stream)
-{
+void writer(const char* message, int count, FILE* stream) {
     for(; count > 0; --count) {
         fprintf(stream, "%s\n", message);
         fflush(stream);
@@ -16,10 +15,8 @@ void writer(const char* message, int count, FILE* stream)
     }
 }
 
-
 /* Read random strings from the stream as long as possible. */
-void reader(FILE* stream)
-{
+void reader(FILE* stream) {
     char buffer[BUF_SIZE];
     while(!feof(stream) && !ferror(stream) 
     					&& fgets(buffer, sizeof(buffer), stream) != NULL) {
@@ -28,8 +25,7 @@ void reader(FILE* stream)
 }
 
 
-int main()
-{
+int main() {
     int fds[2];
     pid_t pid;
 
