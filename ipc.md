@@ -265,3 +265,41 @@ The parent writes a string to the pipe, and the child reads it out.
 
 The sample program converts these file descriptors into `FILE*` streams using `fdopen`.
 This allows for the use of higher-level standard C library I/O functions such as `printf` and `fgets`.
+
+## 1.4. FIFOs (Named Pipes)
+
+A first-in, first-out (FIFO) file is a pipe that has a name in the filesystem.
+
+Any process can open or close the FIFO.
+
+The processes on either end of the pipe need not be related to each other.
+
+FIFOs are also called named pipes.
+
+You can make a FIFO using the `mkfifo` command.
+```
+> mkfifo /tmp/fifo
+> ls -la /tmp/fifo
+prw-rw-r-- 1 armando armando 0 mag 10 10:28 /tmp/fifo
+```
+
+In one window, read from the FIFO by invoking the following:
+```
+> cat < /tmp/fifo
+```
+
+In a second window, write to the FIFO by invoking this:
+```
+> cat > /tmp/fifo
+```
+
+Then type in some lines of text.
+
+Each time you press Enter, the line of text is sent through the FIFO and appears in the first window.
+
+Close the FIFO by sending a EOF (press Ctrl+D) in the second window.
+
+Remove the FIFO with this line:
+```
+> rm /tmp/fifo
+```
