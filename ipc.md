@@ -257,7 +257,7 @@ when the process calls `fork`, file descriptors are copied to the new child proc
 Thus, pipes can connect only related processes.
 
 ### Example
-In the program [04_pipe.c](code/04_pipe.cx), a fork spawns a child process.
+In the program [04_pipe.c](code/04_pipe.c), a fork spawns a child process.
 
 The child inherits the pipe file descriptors.
 
