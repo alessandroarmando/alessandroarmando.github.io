@@ -138,28 +138,67 @@ The following [program](code/shm.c) makes use of shared memory.
 ### Example: Client-Server
 The implementation of the following [client](code/shmclient.c) and [server](code/shmserver.c) makes also use of shared memory.
 
-## Process Semaphores
+## 1.2. Mapped Memory
 
-Linux provides a distinct alternate implementation of semaphores that can be used for synchronizing processes (called *process semaphores*) as opposed to the [*thread semaphores*](threads)we saw earlier.
+*Mapped memory* permits different processes to communicate via a shared file.
 
-Process semaphores are allocated, used, and deallocated like shared memory segments.
+Although you can think of mapped memory as using a shared memory segment
+with a name, there are technical differences.
 
-Although a single semaphore is sufficient for almost all uses, process semaphores come in sets.
+Mapped memory can be used for interprocess communication or as an easy way to access
+the contents of a file.
 
-### Allocation and Deallocation
+Mapped memory forms an association between a file and a process's memory.
 
-The calls `semget` and `semctl` allocate and deallocate semaphores, which is analogous to
-`shmget` and `shmctl` for shared memory.
+Linux splits the file into page-sized chunks and then copies them into virtual memory
+pages so that they can be made available in a process's address space.
 
-Invoke `semget` with a key specifying a semaphore set, the number of semaphores in the set, and permission flags as for `shmget`; the return value is a semaphore set identifier.
+Thus, the process can read the file’s contents with ordinary memory access.
+It can also modify the file's contents by writing to memory.
 
-You can obtain the identifier of an existing semaphore set by specifying the right key value; in this case, the number of semaphores can be zero.
+This permits fast access to files.
 
-Semaphores continue to exist even after all processes using them have terminated.
+You can think of mapped memory as allocating a buffer to hold a file's entire contents, and then reading the file into the buffer and (if the buffer is modified) writing
+the buffer back out to the file afterward.
 
-The last process to use a semaphore set must explicitly remove it to ensure that the
-operating system does not run out of semaphores.
-To do so, invoke `semctl` with the semaphore identifier, the number of semaphores in the set, `IPC_RMID` as the third argument, and any `union semun` value as the fourth argument (which is ignored).
+Linux handles the file reading and writing operations for you.
 
-The effective user ID of the calling process must match that of the semaphore’s allocator
-(or the caller must be `root`). 
+### Mapping an Ordinary File
+
+```
+void *mmap(void *addr, size_t length, int prot, int flags,
+           int fd, off_t offset);
+```
+where
+- `addr` is the address at which you would like Linux to map the file into your process’s address space; the value NULL allows Linux
+to choose an available start address.
+- `length` is the length of the map in bytes.
+- `prot` specifies the protection on the mapped address range (bitwise “or” of `PROT_READ`, `PROT_WRITE`, and `PROT_EXEC`).
+- `flags` is a flag value that specifies additional options.
+- `fd` is a file descriptor opened to the file to be mapped.
+- `offset` is the offset from the beginning of the file from which to start the map.
+
+You can map all or part of the file into memory by choosing the starting offset and length appropriately.
+
+When you’re finished with a memory mapping, release it by using `munmap`: 
+```
+int munmap(void *addr, size_t length);
+```
+
+### Example:
+The first program [02_mmap-write.c](code/02_mmap-write.c) generates a random number and writes it to a memory-mapped file.
+
+The second program [02_mmap-read.c](code/02_mmap-read.c) reads the number, prints it, and replaces it in the memory-mapped file with double the value.
+
+Both take a command-line argument of the file to map.
+
+```
+> ./02_mmap-write.exe integer-file
+> cat integer-file
+15
+> ./02_mmap-read.exe integer-file
+value:15
+> cat integer-file
+30
+```
+
