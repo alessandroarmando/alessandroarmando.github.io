@@ -303,3 +303,64 @@ Remove the FIFO with this line:
 ```
 > rm /tmp/fifo
 ```
+
+### 1.4.1. Creating a FIFO
+
+Create a FIFO programmatically using the `mkfifo` function:
+```
+int mkfifo(const char *pathname, mode_t mode);
+```
+where
+- `pathname` is the path at which to create the FIFO;
+- mode specifies the pipe’s owner, group, and world permissions. (Since a pipe must have a reader and a writer, the permissions must include both read and write permissions.)
+
+### 1.4.2. Accessing a FIFO
+
+Access a FIFO just like an ordinary file.
+
+To communicate through a FIFO, one program must open it for writing, and another program must open it for reading.
+
+For example, to write a buffer of data to a FIFO using low-level I/O routines, you
+could use this code:
+```
+int fd = open (fifo_path, O_WRONLY);
+write (fd, data, data_length);
+close (fd);
+```
+
+To read a string from the FIFO using C library I/O functions, you could use
+this code:
+```
+FILE* fifo = fopen (fifo_path, “r”);
+fscanf (fifo, “%s”, buffer);
+fclose (fifo);
+```
+A FIFO can have multiple readers or multiple writers. Bytes from each writer are
+written atomically up to a maximum size of `PIPE_BUF` (4KB on Linux). Similar rules apply to simultaneous reads.
+
+## 1.5. Sockets
+
+A socket is a bidirectional communication device that can be used to communicate with
+another process on the same machine or with a process running on other machines.
+
+Internet programs such as Telnet, rlogin, FTP, talk, and the World Wide Web use sockets.
+
+For example, you can obtain the WWW page from a Web server using the
+Telnet program because they both use sockets for network communications. 4
+To open a connection to a WWW server at `www.codesourcery.com`, use
+```
+> telnet www.codesourcery.com 80
+Trying 107.23.79.96...
+Connected to www-redirect.mentor-esd.com.
+Escape character is '^]'.
+GET
+GET
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>301 Moved Permanently</title>
+</head><body>
+<h1>Moved Permanently</h1>
+<p>The document has moved <a href="http://www.mentor.com/">here</a>.</p>
+</body></html>
+Connection closed by foreign host.
+```
