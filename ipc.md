@@ -227,3 +227,41 @@ blocks until more capacity becomes available.
 available, it blocks until data becomes available.
 
 Thus, the pipe automatically synchronizes the two processes.
+
+### 1.3.1. Creating Pipes
+
+To create a pipe, invoke the `pipe` command. Supply an integer array of size 2.
+The call to `pipe` stores the reading file descriptor in array position 0 and the writing file
+descriptor in position 1.
+
+For example, consider this code:
+```
+int pipe_fds[2];
+int read_fd, int write_fd;
+
+pipe(pipe_fds);
+read_fd = pipe_fds[0];
+write_fd = pipe_fds[1];
+```
+
+Data written to the file descriptor `read_fd` can be read back from `write_fd`.
+
+### 1.3.2. Communication Between Parent and Child Processes
+
+A call to pipe creates file descriptors, which are valid only within that process and its
+children.
+
+A process’s file descriptors cannot be passed to unrelated processes; however,
+when the process calls `fork`, file descriptors are copied to the new child process.
+
+Thus, pipes can connect only related processes.
+
+### Example
+In the program [04_pipe.c](code/04_pipe.cx), a fork spawns a child process.
+
+The child inherits the pipe file descriptors.
+
+The parent writes a string to the pipe, and the child reads it out.
+
+The sample program converts these file descriptors into `FILE*` streams using `fdopen`.
+This allows for the use of higher-level standard C library I/O functions such as `printf` and `fgets`.
