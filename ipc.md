@@ -137,3 +137,29 @@ The following [program](code/shm.c) makes use of shared memory.
 
 ### Example: Client-Server
 The implementation of the following [client](code/shmclient.c) and [server](code/shmserver.c) makes also use of shared memory.
+
+## Process Semaphores
+
+Linux provides a distinct alternate implementation of semaphores that can be used for synchronizing processes (called *process semaphores*) as opposed to the [*thread semaphores*](threads)we saw earlier.
+
+Process semaphores are allocated, used, and deallocated like shared memory segments.
+
+Although a single semaphore is sufficient for almost all uses, process semaphores come in sets.
+
+### Allocation and Deallocation
+
+The calls `semget` and `semctl` allocate and deallocate semaphores, which is analogous to
+`shmget` and `shmctl` for shared memory.
+
+Invoke `semget` with a key specifying a semaphore set, the number of semaphores in the set, and permission flags as for `shmget`; the return value is a semaphore set identifier.
+
+You can obtain the identifier of an existing semaphore set by specifying the right key value; in this case, the number of semaphores can be zero.
+
+Semaphores continue to exist even after all processes using them have terminated.
+
+The last process to use a semaphore set must explicitly remove it to ensure that the
+operating system does not run out of semaphores.
+To do so, invoke `semctl` with the semaphore identifier, the number of semaphores in the set, `IPC_RMID` as the third argument, and any `union semun` value as the fourth argument (which is ignored).
+
+The effective user ID of the calling process must match that of the semaphore’s allocator
+(or the caller must be `root`). 
