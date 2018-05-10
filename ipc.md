@@ -354,7 +354,6 @@ Trying 107.23.79.96...
 Connected to www-redirect.mentor-esd.com.
 Escape character is '^]'.
 GET
-GET
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
 <html><head>
 <title>301 Moved Permanently</title>
@@ -364,3 +363,83 @@ GET
 </body></html>
 Connection closed by foreign host.
 ```
+
+### 1.5.1. System Calls
+
+These are the system calls involving sockets:
+- `socket`: Creates a socket
+- `close`: Destroys a socket
+- `connect`: Creates a connection between two sockets
+- `bind`: Labels a server socket with an address
+- `listen`: Configures a socket to accept conditions
+- `accept`: Accepts a connection and creates a new socket for the connection
+
+Sockets are represented by file descriptors.
+
+The `socket` and `close` functions create and destroy sockets, respectively:
+```
+int socket(int domain, int type, int protocol);
+int close(int fd);
+```
+where
+- `domain` specifies a communication domain (e.g. `AF_UNIX` and `AF_LOCAL` for local communication and `AF_INET` for Internet Protocols), i.e. the protocol family which will be used for communication.
+- `type` specifies the communication semantics (e.g. `SOCK_STREAM` for sequenced, reliable, two-way, connection-based byte streams and `SOCK_DGRAM` fr datagrams, i.e connectionless, unreliable messages of a fixed maximum length).
+- `protocol` specifies a particular protocol to be used with the socket.  Normally only a single protocol exists to support a particular socket type within a given protocol family, in which case protocol can be specified as 0.
+
+To create a connection between two sockets, the client calls `connect`:
+```
+int connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
+```
+where
+- `sockfd` is the the file description of the socket
+- `addr` is the address of the server
+- `addrlen` specifies the size of addr
+
+The client is the process initiating the connection and the server is the process waiting to accept connections.
+
+The client calls `connect` to initiate a connection from a local socket to the server socket whose address is `addr`.
+
+A server’s life cycle consists of
+- the creation of a connection-style socket,
+- binding an address to its socket,
+- placing a call to listen that enables connections to the socket,
+- placing calls to accept incoming connections, and then
+- closing the socket.
+
+
+An address must be bound to the server’s socket using `bind`:
+```
+ int bind(int sockfd, const struct sockaddr *addr,
+          socklen_t addrlen);
+```		
+where
+- `sockfd` is the socket file descriptor,
+- `addr` is a pointer to a socket address structure
+- `addrlen` is the length of the address structure, in bytes.
+
+When an address is bound to a connection-style socket, it must invoke `listen` to indicate that it is a server:
+```
+int listen(int sockfd, int backlog);
+```
+where
+- `sockfd` is the socket file descriptor,
+- `backlog` specifies how many pending connections are queued. If the queue is full, additional connections will be rejected.  (This does not limit the total number of connections that a server can handle; it limits just the number of clients attempting to connect that have not yet
+been accepted.)
+
+A server accepts a connection request from a client by invoking `accept`:
+```
+int accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen);
+```
+where
+- `sockfd` is the socket file descriptor,
+- `addr` is a pointer to a socket address structure
+- `addrlen` is the length of the address structure, in bytes.
+
+The server can use the client address to determine whether it really wants to communicate with the client.
+
+The call to `accept` creates a new socket for communicating with the client and returns the corresponding file descriptor.
+
+The original server socket continues to accept new client connections.
+
+### Example
+Server [07_socket_server.c](code/07_socket_server.c) and client [07_socket_client.c](code/07_socket_client.c) using sockets.
