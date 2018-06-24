@@ -8,16 +8,12 @@
 
 #define FILE_LENGTH 0x100
 
-
-int random_range(unsigned const low, unsigned const high)
-{
+int random_range(unsigned const low, unsigned const high) {
     unsigned const range = high - low + 1;
     return low + (int)(((double)range)*rand()/(RAND_MAX + 1.0));
 }
 
-
-int main(int argc, char* const argv[])
-{
+int main(int argc, char* const argv[]) {
     int fd;
     void* file_memory;
 
@@ -37,6 +33,10 @@ int main(int argc, char* const argv[])
     close(fd);
 
 	/* Write a random integer to memory-mapped area. */
+    char *fm;
+    fm=(char *)file_memory;
+    fm[100]='8';
+
     sprintf((char*)file_memory, "%d\n", random_range(-100, 100));
 
 	/* Release the memory (unnecessary because the program exits). */
