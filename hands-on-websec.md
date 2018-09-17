@@ -33,17 +33,17 @@ The content of this page largely taken and adapted from Andrea Valenza's [Cyber-
 
 - [Vagrant](https://www.vagrantup.com/)
 
- - [ScotchBox](https://box.scotch.io/) - A simple LAMP stack for Vagrant 
- - pre-built: https://github.com/AvalZ/cyber-gym
+	- [ScotchBox](https://box.scotch.io/) - A simple LAMP stack for Vagrant 
+	- pre-built: https://github.com/AvalZ/cyber-gym
 
 - or build a custom VM (VMWare or Virtualbox) with:
 
- - Ubuntu (any Debian-based Linux distro will do)
- - LAMP Stack installed, which means:
- - Linux
- - Apache
- - MySQL
- - PHP
+	- Ubuntu (any Debian-based Linux distro will do)
+	- LAMP Stack installed, which means:
+	- Linux
+	- Apache
+	- MySQL
+	- PHP
 
 ## Hello World!
 
