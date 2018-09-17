@@ -86,13 +86,13 @@ Cognome<input type="text" name="lastname"><br/>
 Be careful: the field names must be the same as in the HTTP request!
 Point it to the PHP page that displays “Hello firstname lastname!”
 
-##SQL Basics
+## SQL Basics
 - SELECT
 
--- FROM
--- WHERE
--- LIMIT
--- ORDER BY / GROUP BY
+	- FROM
+	- WHERE
+	- LIMIT
+	- ORDER BY / GROUP BY
 
 - INSERT
 - UPDATE
