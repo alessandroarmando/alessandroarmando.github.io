@@ -375,68 +375,6 @@ firstname:		John<svg onload=”
 lastname:		alert('gotcha!')”>Doe
 Output: 		Hello John[ … popup saying “gotcha!” …  ]Doe!				Each parameter is checked on its own! No match = rendered
 
-Private Messaging System - EXPLOIT
-XSS Stored
-Chrome XSS Auditor won't work here, it only checks for GET parameters
-Code: 			echo “From: <b>{$row['from']}</b> &lt; {$row['content']}”;					// Next level HTML inline templates  :V					// Don't try this at home (or even worse, at work)
-Payload:			|  id	|	from		|	to	|		content		|				|   2	|  	Ford		|    Arthur	|    Hi Arthur! How are you?	|				|   5	|	Ford		|    Arthur	|    Sure!				|
-Output: 			From: Ford > Hi Arthur! How are you?				From: Ford > Sure!
-
-Private Messaging System - EXPLOIT
-XSS Stored
-A simple XSS: this one is just annoying, not really malicious
-Code: 			echo “From: <b>{$row['from']}</b> &lt; {$row['content']}”;					
-Payload:			|  id	|	from		|	to	|		content		|				|   2	|  	Ford		|    Arthur	|    Hi Arthur! How are you?	|				|   5	|	Ford		|    Arthur	|    <script>alert(1)</script>	|
-Output: 			From: Ford > Hi Arthur! How are you?				From: Ford > [ … popup appears saying “1” … ]
-
-Private Messaging System - EXPLOIT
-XSS Stored
-iFrame Injection
-Code: 			echo “From: <b>{$row['from']}</b> &lt; {$row['content']}”;					
-Payload:			|  id	|	from		|	to	|		content		|				|   2	|  	Ford		|    Arthur	|    Hi Arthur! How are you?	|				|   5	|	Ford		|    Arthur	| <iframe src="..."></iframe>	|
-Output: 			From: Ford > Hi Arthur! How are you?				From: Ford > [ a frame with the target (src) website in it ]
-
-Private Messaging System - EXPLOIT
-XSS Stored
-CSRF - Cross-Site Request Forgery
-Make your victim perform an arbitrary action
-Code: 			echo “From: <b>{$row['from']}</b> &lt; {$row['content']}”;					
-Payload:			|  id	|	from		|	to	|		content		|				|   2	|  	Ford		|    Arthur	|    Hi Arthur! How are you?	|				|   5	|	Ford		|    Arthur	| 	<img src="..."/>		|
-Output: 			From: Ford > Hi Arthur! How are you?				From: Ford > [ a GET action is automatically performed ]
-
-Private Messaging System - FIX
-htmlspecialchars($string, ENT_QUOTES, 'UTF-8')
-We have to sanitize all outputs to the client
-Code: 			$from = htmlspecialchars($row['from']);							$content = htmlspecialchars($row['content']);				echo “From: <b>$from</b> &lt; $content”;	
-Payload:			|  id	|	from		|	to	|		content		|				|   2	|  	Ford		|    Arthur	|    Hi Arthur! How are you?	|				|   5	|	Ford		|    Arthur	|    <script>alert(1)</script>	|
-Output: 			From: Ford > Hi Arthur! How are you?				From: Ford > <script>alert(1)</script>  (NOT RENDERED!! WOAH!!)
-
-Recap
-Server-side attacks
-SQL Injection
-Stacked queries
-Login Bypass
-“Always True” clause
-UNION Based SQL Injection
-Error Based SQL Injection
-Blind SQL Injection
-Boolean-based Blind
-Brute force
-Linear Search
-Binary Search
-Time-based Blind
-Prepared Statements
-Client-side attacks
-XSS
-XSS Reflected
-Form Injection
-Session Hijack
-Session Hijack (covert)
-Bypass XSS Auditor
-XSS Stored
-iFrame Injection
-CSRF
-Sanitization
 
 APPENDIX A - Information Gathering
 Path Traversal
