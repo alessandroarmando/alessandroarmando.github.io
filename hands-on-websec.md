@@ -9,25 +9,34 @@ The content of this page largely taken and adapted from Andrea Valenza's [Cyber-
 
 ## Requirements
 - HTTP Protocol
+
   -- Sending Parameters over HTTP
+
 - Technologies
+
   -- HTML (CSS is optional)
   -- JavaScript
+
     --- Running a simple embedded script
+
   -- PHP
+
     --- Read parameters from requests
     --- Simple output
     --- Fetch data from MySQL DB
   -- SQL
+
     ---Simple queries
 
 ## Virtual Machine
 
 - [Vagrant](https://www.vagrantup.com/)
+
  -- [ScotchBox](https://box.scotch.io/) - A simple LAMP stack for Vagrant 
  -- pre-built: https://github.com/AvalZ/cyber-gym
 
 - or build a custom VM (VMWare or Virtualbox) with:
+
  -- Ubuntu (any Debian-based Linux distro will do)
  -- LAMP Stack installed, which means:
  -- Linux
