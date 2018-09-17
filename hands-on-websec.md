@@ -10,21 +10,24 @@ The content of this page largely taken and adapted from Andrea Valenza's [Cyber-
 ## Requirements
 - HTTP Protocol
 
-	-- Sending Parameters over HTTP
+	- Sending Parameters over HTTP
 
 - Technologies
 
-	-- HTML (CSS is optional)
-	-- JavaScript
+	- HTML (CSS is optional)
 
-		--- Running a simple embedded script
+		- JavaScript
+		- Running a simple embedded script
 
-	-- PHP
-		--- Read parameters from requests
-		--- Simple output
-		--- Fetch data from MySQL DB
-	-- SQL
-		--- Simple queries
+	- PHP
+
+	    - Read parameters from requests
+		- Simple output
+		- Fetch data from MySQL DB
+
+	- SQL
+
+		- Simple queries
 
 ## Virtual Machine
 
