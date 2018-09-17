@@ -51,11 +51,11 @@ Open a hello.php file in your Root Web folder
 <?php echo "Hello World!";?>
 ```
 Go to your favorite Browser
-Open ```<IP>/hello.php```
+Open `<IP>/hello.php`
 
 ## Read GET parameters
-1. Copy ```hello.php``` in ```hello2.php``` (we don’t want to lose all that hard work, do we?)
-2. Get the ```GET``` parameters
+1. Copy `hello.php` in `hello2.php` (we don’t want to lose all that hard work, do we?)
+2. Get the `GET` parameters
 ```
 $firstname = $_GET["firstname"];
 $lastname = $_GET["lastname"];
@@ -69,7 +69,7 @@ WARNING: the “variable in a string” trick will work ONLY with double quotes!
 ```
 .../hello2.php?firstname=John&lastname=Doe
 ```
-Should display ```Hello John Doe!```
+Should display `Hello John Doe!`
 
 ## Simple HTML Form
 Tired of writing everything in that tiny URL box? Let’s switch to forms!
@@ -87,26 +87,29 @@ Point it to the PHP page that displays “Hello firstname lastname!”
 
 ##SQL Basics
 - SELECT
-- FROM
-- WHERE
-- LIMIT
-- ORDER BY / GROUP BY
+
+-- FROM
+-- WHERE
+-- LIMIT
+-- ORDER BY / GROUP BY
+
 - INSERT
 - UPDATE
 - DELETE
 
 If you don’t know what one (or more) of these does, stop reading and Google it!
 
-Mandatory xkcd slide (a.k.a. Stacked Queries)
-Stacked queries
+## Stacked queries
+![Mom exploit](https://imgs.xkcd.com/comics/exploits_of_a_mom.png)
 
+- Query: 	`SELECT * FROM Students WHERE(name='$name')`
+- Payload: 	`Robert'); DROP TABLE Students;-- `
 
-Query: 	SELECT * FROM Students WHERE(name=’$name’)
-Payload: 	Robert’); DROP TABLE Students;-- 
 SELECT * FROM Students WHERE(name=’Robert’); DROP TABLE Students;-- ’)
-SELECT * FROM Students WHERE(name=’Robert’); DROP TABLE Students;-- ’)	[ No library will ever let you do this anymore, only 1 query at a time (but nesting is ok!) ]
 
-Creating a SQL Database
+No library will ever let you do this anymore, only 1 query at a time (but nesting is ok!) ]
+
+## Creating a SQL Database
 Go to your MySQL Interpreter (either CLI, MySQL Workbench, or PHP)
 CREATE DATABASE websec;
 Now create a table inside it
