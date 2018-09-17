@@ -215,64 +215,34 @@ Sessions are indexed by `PHPSESSID`.
 
 Remember: HTTP is stateless!
 
-Recap
-Server-side attacks
-SQL Injection
-Stacked queries
-Login Bypass
-“Always True” clause
-UNION Based SQL Injection
-Error Based SQL Injection
-Blind SQL Injection
-Boolean-based Blind
-Brute force
-Linear Search
-Binary Search
-Time-based Blind
-Prepared Statements
+## Handling passwords in your DB
+- Plaintext passwords
 
-Handling passwords in your DB
-Plaintext passwords
-Attackers can steal login credentials
-Ciphered passwords (but how?)
-MD5											Tool: John the Ripper
-Can be guessed using		Dictionary Attack
-Easily “reversible” 		Collision Attack
-SHA-1
-Reversible using 		Rainbow Tables
-SHA-1  +  Salt
-Rainbow tables exist for simple salts
-BCrypt
-Based on Blowfish cipher
-Double salting: simple concatenated salt + number of iterations
-All saved in-format (no need for another column)
+  - Attackers can steal login credentials
 
-Private Messaging System - FIX
-Context awareness (we're sanitizing integers as strings)
-mysql_real_escape_string does not escape non-string arguments
-but we can still “cast” a value to Integer
-$safe_id = (int)$id
-Completely avoid mixing Code and Data
-Prepared Statements
-Prepare a query	$stmt = $con->prepare(“SELECT * FROM users WHERE id=?”);
-Bind parameters		$stmt->bind(“i”, $id);
-Execute the query	$stmt->execute();
+- Ciphered passwords (but how?)
 
-Recap
-Server-side attacks
-SQL Injection
-Stacked queries
-Login Bypass
-“Always True” clause
-UNION Based SQL Injection
-Error Based SQL Injection
-Blind SQL Injection
-Boolean-based Blind
-Brute force
-Linear Search
-Binary Search
-Time-based Blind
-Prepared Statements
+  - MD5
+
+	- Can be guessed using Dictionary Attack
+	- Easily “reversible” Collision Attack
+
+  - SHA-1
+
+	- Reversible using 		Rainbow Tables
+
+  - SHA-1  +  Salt
+
+	- Rainbow tables exist for simple salts
+
+  - BCrypt
+
+	- Based on Blowfish cipher
+	- Double salting: simple concatenated salt + number of iterations
+	- All saved in-format (no need for another column)
+
+  - Password Cracking Tool: [John the Ripper](https://www.openwall.com/john/)
+
 
 So we're done! ... right?
 We avoided server-side attacks! Yay!
