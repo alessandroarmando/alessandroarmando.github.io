@@ -161,6 +161,7 @@ else: display error message
 Can you login as `Arthur` without knowing his password?
 
 Query:	`SELECT * FROM users WHERE username='$user' AND password='$pass'`
+
 Payload:
 
 - username: `Arthur' -- -`
