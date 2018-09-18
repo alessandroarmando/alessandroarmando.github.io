@@ -3,6 +3,8 @@ layout: default
 title: "Web Security - Hands on"
 ---
 
+
+
 # Web Security - Hands-on
 
 The content of this page largely taken and adapted from Andrea Valenza's [Cyber-Gym](https://github.com/AvalZ/cyber-gym))
@@ -44,6 +46,19 @@ The content of this page largely taken and adapted from Andrea Valenza's [Cyber-
 	- Apache
 	- MySQL
 	- PHP
+
+## Setup
+
+1. Clone this repository
+    * `git clone https://github.com/AvalZ/cyber-gym.git` _or_
+    * `git clone git@github.com:AvalZ/cyber-gym.git` _or_
+    * download the zip from [here](https://github.com/AvalZ/cyber-gym/archive/master.zip) and unzip it in a local folder.
+2. `cd cyber-gym/` (or `cd cyber-gym-master` if you downloaded the zip)
+3. `vagrant up`
+4. Browse http://192.168.33.10
+5. Create a table named 'accounts' or go to http://192.168.33.10/db/setup_db.php
+6. Done!
+
 
 ## Hello World!
 
