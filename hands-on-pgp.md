@@ -219,7 +219,7 @@ sig!       BB7576AC 1999-06-04   Alice (Judge) <alice@cyb.org>
 
 ### Encrypting and decrypting documents
 
-To decrypt a message the option `--encrypt` is used.
+To encrypt a message the option `--encrypt` is used.
 ```
 alice> gpg --output doc.gpg --encrypt --recipient blake@cyb.org doc
 ```
@@ -227,7 +227,7 @@ alice> gpg --output doc.gpg --encrypt --recipient blake@cyb.org doc
 * The encrypted document can only be decrypted by someone with a private key that complements one of the recipients' public keys.
 * Note: you cannot decrypt a document encrypted by you unless you included your own public key in the recipient list.
 
-* To decrypt a message the option `--decrypt` is used.
+To decrypt a message the option `--decrypt` is used.
 * You need the private key to which the message was encrypted. 
 
 ```
