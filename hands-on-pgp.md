@@ -217,6 +217,260 @@ sig!       9E98BC16 1999-06-04   [self-signature]
 sig!       BB7576AC 1999-06-04   Alice (Judge) <alice@cyb.org>
 ```
 
+### Web of Trust
+
+Validating a correspondent's key by personally checking his key's fingerprint is ok but requires a secure channel to obtain the fingerprint.
+
+In the web of trust model, responsibility for validating public keys is delegated to people you trust. For example, suppose
+
+* Alice has signed Blake's key, and
+* Blake has signed Chloe's key and Dharma's key.
+
+If Alice trusts Blake to properly validate keys that he signs, then Alice can infer that Chloe's and Dharma's keys are valid without having to personally check them. She simply uses her validated copy of Blake's public key to check that Blake's signatures on Chloe's and Dharma's are good. 
+
+In practice trust is subjective. For example, Blake's key is valid to Alice since she signed it, but she may not trust Blake to properly validate keys that he signs. In that case, she would not take Chloe's and Dharma's key as valid based on Blake's signatures alone. 
+
+The web of trust model accounts for this by associating with each public key on your keyring an indication of how much you trust the key's owner. There are four trust levels.
+
+* *unknown* Nothing is known about the owner's judgment in key signing. Keys on your public keyring that you do not own initially have this trust level.
+
+* *none* The owner is known to improperly sign other keys.
+
+* *marginal* The owner understands the implications of key signing and properly validates keys before signing them.
+
+* *full* The owner has an excellent understanding of key signing, and his signature on a key would be as good as your own.
+
+A key's trust level is something that you alone assign to the key, and it is considered *private* information. It is not packaged with the key when it is exported; it is even stored separately from your keyrings in a separate database.
+
+The GnuPG key editor may be used to adjust your trust in a key's owner. The command is trust. In this example Alice edits her trust in Blake and then updates the trust database to recompute which keys are valid based on her new trust in Blake.
+
+```
+alice% gpg --edit-key blake
+
+pub  1024D/8B927C8A  created: 1999-07-02 expires: never      trust: q/f
+sub  1024g/C19EA233  created: 1999-07-02 expires: never
+(1)  Blake (Executioner) <blake@cyb.org>
+
+Command> trust
+pub  1024D/8B927C8A  created: 1999-07-02 expires: never      trust: q/f
+sub  1024g/C19EA233  created: 1999-07-02 expires: never
+(1)  Blake (Executioner) <blake@cyb.org>
+
+Please decide how far you trust this user to correctly
+verify other users' keys (by looking at passports,
+checking fingerprints from different sources...)?
+
+ 1 = Don't know
+ 2 = I do NOT trust
+ 3 = I trust marginally
+ 4 = I trust fully
+ s = please show me more information
+ m = back to the main menu
+
+Your decision? 3
+
+pub  1024D/8B927C8A  created: 1999-07-02 expires: never      trust: m/f
+sub  1024g/C19EA233  created: 1999-07-02 expires: never
+(1)  Blake (Executioner) <blake@cyb.org>
+
+Command> quit
+[...]
+```
+
+Trust in the key's owner and the key's validity are indicated to the right when the key is displayed. Trust in the owner is displayed first and the key's validity is second[4]. The four trust/validity levels are abbreviated: unknown (q), none (n), marginal (m), and full (f). In this case, Blake's key is fully valid since Alice signed it herself. She initially has an unknown trust in Blake to properly sign other keys but decides to trust him marginally.
+
+The web of trust allows a more elaborate algorithm to be used to validate a key. Formerly, a key was considered valid only if you signed it personally. A more flexible algorithm can now be used: a key K is considered valid if it meets two conditions:
+
+1. it is signed by enough valid keys, meaning
+ * you have signed it personally,
+ * it has been signed by one fully trusted key, or
+ * it has been signed by three marginally trusted keys; and
+2. the path of signed keys leading from K back to your own key is five steps or shorter.
+
+The path length, number of marginally trusted keys required, and number of fully trusted keys required may be adjusted. The numbers given above are the default values used by GnuPG.
+
+The following DAG and table show a web of trust rooted at Alice. 
+
+![DAG](https://www.gnupg.org/gph/en/manual/signatures.jpg)
+
+<DIV
+CLASS="INFORMALTABLE"
+><P
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><THEAD
+><TR
+><TH
+COLSPAN="2"
+ALIGN="CENTER"
+VALIGN="TOP"
+>trust</TH
+><TH
+COLSPAN="2"
+ALIGN="CENTER"
+VALIGN="TOP"
+>validity</TH
+></TR
+><TR
+><TH
+WIDTH="25%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>marginal</TH
+><TH
+WIDTH="25%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>full</TH
+><TH
+WIDTH="25%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>marginal</TH
+><TH
+WIDTH="25%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>full</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>&nbsp;</TD
+><TD
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Dharma</TD
+><TD
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>&nbsp;</TD
+><TD
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Blake, Chloe, Dharma, Francis</TD
+></TR
+><TR
+><TD
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Blake, Dharma</TD
+><TD
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>&nbsp;</TD
+><TD
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Francis</TD
+><TD
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Blake, Chloe, Dharma</TD
+></TR
+><TR
+><TD
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Chloe, Dharma</TD
+><TD
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>&nbsp;</TD
+><TD
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Chloe, Francis</TD
+><TD
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Blake, Dharma</TD
+></TR
+><TR
+><TD
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Blake, Chloe, Dharma</TD
+><TD
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>&nbsp;</TD
+><TD
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Elena</TD
+><TD
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Blake, Chloe, Dharma, Francis</TD
+></TR
+><TR
+><TD
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>&nbsp;</TD
+><TD
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Blake, Chloe, Elena</TD
+><TD
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>&nbsp;</TD
+><TD
+WIDTH="25%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Blake, Chloe, Elena, Francis</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+></DIV
+></DIV
+>
+
+The graph illustrates who has signed who's keys. The table shows which keys Alice considers valid based on her trust in the other members of the web. This example assumes that two marginally-trusted keys or one fully-trusted key is needed to validate another key. The maximum path length is three.
+
+When computing valid keys in the example, Blake and Dharma's are always considered fully valid since they were signed directly by Alice. The validity of the other keys depends on trust. 
+
+* In the first case, Dharma is trusted fully, which implies that Chloe's and Francis's keys will be considered valid. 
+* In the second example, Blake and Dharma are trusted marginally. Since two marginally trusted keys are needed to fully validate a key, Chloe's key will be considered fully valid, but Francis's key will be considered only marginally valid. 
+* In the case where Chloe and Dharma are marginally trusted, Chloe's key will be marginally valid since Dharma's key is fully valid. Francis's key, however, will also be considered marginally valid since only a fully valid key can be used to validate other keys, and Dharma's key is the only fully valid key that has been used to sign Francis's key. When marginal trust in Blake is added, Chloe's key becomes fully valid and can then be used to fully validate Francis's key and marginally validate Elena's key. * Lastly, when Blake, Chloe, and Elena are fully trusted, this is still insufficient to validate Geoff's key since the maximum certification path is three, but the path length from Geoff back to Alice is four.
+
+The web of trust model is a flexible approach to the problem of safe public key exchange. It permits you to tune GPG to reflect how you use it. At one extreme you may insist on multiple, short paths from your key to another key K in order to trust it. On the other hand, you may be satisfied with longer paths and perhaps as little as one path from your key to the other key K. Requiring multiple, short paths is a strong guarantee that K belongs to whom your think it does. The price, of course, is that it is more difficult to validate keys since you must personally sign more keys than if you accepted fewer and longer paths.
+
+
+
+
+
 ### Encrypting and decrypting documents
 
 To encrypt a message the option `--encrypt` is used.
