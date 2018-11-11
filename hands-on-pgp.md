@@ -445,7 +445,7 @@ VALIGN="TOP"
 WIDTH="25%"
 ALIGN="LEFT"
 VALIGN="TOP"
->Blake, Chloe, Elena, Francis</TD
+>Blake, Chloe, Dharma, Elena, Francis</TD
 ></TR
 ></TBODY
 ></TABLE
