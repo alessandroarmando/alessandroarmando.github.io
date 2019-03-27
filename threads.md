@@ -1,9 +1,9 @@
 --- 
 layout: default
-title: "Calcolatori Elettronici (a.y. 2017-2018) - Linux Threads"
+title: "Calcolatori Elettronici (a.y. 17-18, 18-19) - Linux Threads"
 ---
 
-# Calcolatori Elettronici (a.y. 2017-2018) - Linux Threads
+# Calcolatori Elettronici (a.y. 17-18, 18-19) - Linux Threads
 
 
 ## 1. Introduction
