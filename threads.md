@@ -55,10 +55,10 @@ Upon creation, each thread executes a *thread function*:
 * Thread functions take a single parameter, of type `void *` and have a `void *` return type.  For example
 ```
 void* print_cs (void* c) {
-  char *pch=(char *)c; // type casting
-  while (1)
-    fputc (*pch, stdout);
-  return NULL;
+ char *pch=(char *)c; // type casting
+ while (1)
+  fputc (*pch, stdout);
+ return NULL;
 }
 ```
 * When the thread function returns, the thread exits.
