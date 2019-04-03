@@ -17,8 +17,7 @@ same process,
 * but each thread may be executing a different part of the program at any given time.
 
 When a program forks a child process, the child process initially
-runs its parent’s program, with its parent’s virtual memory, file descriptors, and so
-on copied.
+runs its parent’s program, with a copy of its parent’s virtual memory, file descriptors, and so on.
 
 The child process can modify its memory, close file descriptors, and the like
 without affecting its parent, and vice versa.
