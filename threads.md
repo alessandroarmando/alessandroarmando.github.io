@@ -26,7 +26,7 @@ When a program creates another thread nothing is copied.
 The creating and the created thread share the same memory
 space, file descriptors, and other system resources as the original.
 
-If one thread changes the value of a variable, for instance, the other thread subsequently will see the modified value.
+If one thread changes the value of a variable, for instance, the other thread will see the modified value.
 
 Similarly, if one thread closes a file descriptor, other threads may not read from or write to that file descriptor.
 
