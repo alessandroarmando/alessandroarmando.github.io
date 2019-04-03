@@ -5,7 +5,6 @@
 #include <sysexits.h>
 #include <unistd.h>
 
-
 int spawn(char* program_name, char** arg_list) {
     pid_t child_pid;
 
@@ -21,7 +20,6 @@ int spawn(char* program_name, char** arg_list) {
         exit(EX_OSERR);
     }
 }
-
 
 int main() {
     int child_status, child_pid;
