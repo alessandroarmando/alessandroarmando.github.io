@@ -110,7 +110,7 @@ The program can be compiled and link using the following command:
 
 The program has an important bug though.  Can you spot it?
 
-[Check your answer](thread_join)
+[Check your answer here.](thread_join)
   
 
 ## 3. Synchronization and Critical Sections
