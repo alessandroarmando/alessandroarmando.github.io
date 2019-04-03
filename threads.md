@@ -24,11 +24,11 @@ without affecting its parent, and vice versa.
 
 When a program creates another thread nothing is copied.
 The creating and the created thread share the same memory
-space, file descriptors, and other system resources as the original.
+space, file descriptors, and other system resources as the original:
 
-If one thread changes the value of a variable, for instance, the other thread will see the modified value.
+* if one thread changes the value of a variable, for instance, the other thread will see the modified value.
 
-Similarly, if one thread closes a file descriptor, other threads may not read from or write to that file descriptor.
+* if one thread closes a file descriptor, other threads may not read from or write to that file descriptor.
 
 Because a process and all its threads can be executing only one program at a time, if any thread inside a process calls one of the `exec` functions, all the other existing threads are ended.
 
