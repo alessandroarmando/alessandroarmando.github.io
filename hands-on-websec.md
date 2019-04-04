@@ -290,7 +290,7 @@ Payload:
 
 - firstname: `<i>John</i>`
 - lastname: `<u>Doe</u>`
-- Output: `Hello `<i>John</i><u>Doe</u>!
+- Output: `Hello `<i>John</i> <u>Doe</u>!
 
 ## XSS Reflected - Form Injection
 
