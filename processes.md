@@ -97,11 +97,10 @@ int main() {
 ```
 
 ---
-## Exercise
+## Exercises
 
-Solve the following [exercise](code/ce-so-fork-01-nosolution.pdf).
-
-Here is the [solution](code/ce-so-fork-01-solution.pdf).
+* 1. Here is a simple [exercise](code/ce-so-fork-01-nosolution.pdf).  Check your solution [here](code/ce-so-fork-01-solution.pdf).
+* 2. Here is a slightly mode difficult [exercise](code/ce-so-fork-03-nosolution.pdf).  Check your solution [here](code/ce-so-fork-03-solution.pdf).
 
 ---
 
