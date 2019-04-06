@@ -104,7 +104,7 @@ Solve the following [exercise](code/ce-so-fork-01-nosolution.pdf).
 Here is the [solution](code/ce-so-fork-01-solution.pdf).
 ---
 
-### Using the ``exec`` family
+## Using the ``exec`` family
 
 The ``exec`` functions replace the program running in a process with another program.
 
