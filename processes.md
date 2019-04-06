@@ -96,7 +96,7 @@ int main() {
 
 ```
 
-#### Exercise
+### Exercise
 
 Solve the following [exercise](code/ce-so-fork-01-nosolution.pdf).
 
