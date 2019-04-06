@@ -6,7 +6,7 @@ title: "Calcolatori Elettronici (a.y. 18-19) - Linux Processes"
 # Calcolatori Elettronici (a.y. 18-19) - Linux Processes
 
 
-## 1. Introduction
+# 1. Introduction
 
 Each process in a Linux system is identified by its unique process ID, sometimes
 referred to as pid.
@@ -34,7 +34,7 @@ return 0;
 }
 ```
 
-## Using ``fork`` and ``exec``
+# 2. Using ``fork`` and ``exec``
 
 Linux provides one function, ``fork``, that makes a child process that is an exact copy of its parent process.
 
@@ -97,7 +97,7 @@ int main() {
 ```
 
 ---
-### Exercise
+## Exercise
 
 Solve the following [exercise](code/ce-so-fork-01-nosolution.pdf).
 
@@ -113,7 +113,7 @@ When a program calls an ``exec`` function, that process immediately ceases execu
 program and begins executing a new program from the beginning, assuming that the
 exec call doesn’t encounter an error.
 
-### Using ``fork`` and ``exec`` together
+## Using ``fork`` and ``exec`` together
 
 ```
 #include <stdio.h>
@@ -123,13 +123,9 @@ exec call doesn’t encounter an error.
 #include <sysexits.h>
 #include <unistd.h>
 
-
-int spawn(char* program_name, char** arg_list)
-{
+int spawn(char* program_name, char** arg_list) {
     pid_t child_pid;
-
     child_pid = fork();
-
     if(child_pid != 0) {
         return child_pid; // if I am the parent, return the child pid
     }
@@ -141,9 +137,7 @@ int spawn(char* program_name, char** arg_list)
     }
 }
 
-
-int main()
-{
+int main() {
     int child_status, child_pid;
 
     char* arg_list[] = {
@@ -152,25 +146,19 @@ int main()
         "/",
         NULL
     };
-
     child_pid = spawn(arg_list[0], arg_list);
-    
     waitpid(child_pid, &child_status, 0); // wait for the child whose PID is equal to child_pid
-
     /*
      * if you have only one child you can use:
      * wait (&child_status);
      */
-
     if(WIFEXITED(child_status)) {
         printf("The child process exited normally with exit code %d.\n", WEXITSTATUS(child_status));
     }
     else {
         printf("The child process exited abnormally.\n");
     }
-
     printf("Done with the main program.\n");
-
     return 0;
 }
 ```
