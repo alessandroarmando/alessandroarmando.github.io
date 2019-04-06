@@ -69,12 +69,9 @@ Because no process ever has a process ID of zero, this makes it easy for the pro
 #include <unistd.h>
 
 int main() {
-
     int child_status;
     pid_t child_pid;
-
     printf("The main program has the PID %d.\n\n", getpid());
-    
     child_pid = fork();
     /*
      * fork() creates a new process. 
