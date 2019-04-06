@@ -24,7 +24,8 @@ github_username:  alessandroarmando
 
 # Build settings
 markdown: kramdown
-theme: minima
+# theme: minima
+remote_theme: pixeldroid/programming-pages
 plugins:
   - jekyll-feed
 
