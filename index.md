@@ -7,6 +7,6 @@ title: "Computer Security: Hands-on material"
 
 * [Establishing an SSH connection](hands-on-ssh)
 * [Introduction to PGP](hands-on-pgp)
-* [Linux Processes](threads)
+* [Linux Processes](processes)
 * [Linux Threads](threads)
 * [Interprocess Communication](ipc)
