@@ -215,7 +215,7 @@ sem_post(&s); // post/signal
 ```
 
 ### Example: Interleaved Arrows (correct version using semaphores)
-The correct version of the previous program using semaphores is available [here](code/thread_arrows_semaphores.c).  
+The correct version of the previous program using semaphores is available [here](code/thread_arrows_sem.c).  
 
 
 
