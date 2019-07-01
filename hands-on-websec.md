@@ -7,7 +7,7 @@ title: "Web Security - Hands on"
 
 # Web Security - Hands-on
 
-The content of this page largely taken and adapted from Andrea Valenza's [Cyber-Gym](https://github.com/AvalZ/cyber-gym))
+The content of this page largely taken and adapted from Andrea Valenza's [Cyber-Gym](https://github.com/AvalZ/cyber-gym)
 
 ## Requirements
 - HTTP Protocol
