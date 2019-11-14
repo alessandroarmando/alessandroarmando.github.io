@@ -1,12 +1,8 @@
 --- 
 layout: default
-title: "Computer Security: Hands-on material"
+title: "Alessandro Armando's Hands-on material"
 ---
 
-# Computer Security: Hands-on material
+# [Computer Security](index-cs)
 
-* [Establishing an SSH connection](hands-on-ssh)
-* [Introduction to PGP](hands-on-pgp)
-* [Linux Processes](processes)
-* [Linux Threads](threads)
-* [Interprocess Communication](ipc)
+# [Calcolatori Elettronici](index-ce)
