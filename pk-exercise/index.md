@@ -15,4 +15,12 @@ You realize you need Gen. Garibaldi's public key.
 
 You ask your agents to find it.
 
-After some time an agent come back to you with the following key:
+After some time an agent come back to you with [this key](gg@gmail.com.pk).
+
+Question:
+
+* Where the expedition will sail from?
+  - Genova Quinto
+  - Genova Quarto
+  - Genova Nervi
+
