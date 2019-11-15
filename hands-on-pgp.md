@@ -7,6 +7,15 @@ This document aims to be a gentle introduction to PGP.
 The text of next section is taken from the post [OpenPGP, PGP and GPG: What is the difference?](https://www.goanywhere.com/blog/2013/07/18/openpgp-pgp-gpg-difference).
 The rest of the document heavily relies on [The GNU Privacy Handbook](https://www.gnupg.org/gph/en/manual.html).
 
+
+| Option | Description |
+| ------:| -----------:|
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default. |
+| ext    | extension to be used for dest files. |
+
+
+
 ## Differences among OpenPGP, PGP and GPG
 
 
