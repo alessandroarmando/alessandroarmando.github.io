@@ -287,6 +287,12 @@ The web of trust allows a more elaborate algorithm to be used to validate a key.
 
 The path length, number of marginally trusted keys required, and number of fully trusted keys required may be adjusted. The numbers given above are the default values used by GnuPG.
 
+
+
+The following DAG and table show a web of trust rooted at Alice. 
+
+![DAG](https://www.gnupg.org/gph/en/manual/signatures.jpg)
+
 marginal trust        | full trust            | marginal validity | full validity
 --------------------- | --------------------- | ----------------- | -----------------------------
                       | Dharma                |                   | Blake, Chloe, Dharma, Francis
@@ -296,175 +302,6 @@ Blake, Chloe, Dharma  |                       | Elena             | Blake, Chloe
                       | Blake, Chloe, Elena   |                   | Blake, Chloe, Dharma, Elena, Francis
 
 
-
-The following DAG and table show a web of trust rooted at Alice. 
-
-![DAG](https://www.gnupg.org/gph/en/manual/signatures.jpg)
-
-
-<DIV
-CLASS="INFORMALTABLE"
-><P
-></P
-><TABLE
-BORDER="1"
-CLASS="CALSTABLE"
-><THEAD
-><TR
-><TH
-COLSPAN="2"
-ALIGN="CENTER"
-VALIGN="TOP"
->trust</TH
-><TH
-COLSPAN="2"
-ALIGN="CENTER"
-VALIGN="TOP"
->validity</TH
-></TR
-><TR
-><TH
-WIDTH="25%"
-ALIGN="CENTER"
-VALIGN="TOP"
->marginal</TH
-><TH
-WIDTH="25%"
-ALIGN="CENTER"
-VALIGN="TOP"
->full</TH
-><TH
-WIDTH="25%"
-ALIGN="CENTER"
-VALIGN="TOP"
->marginal</TH
-><TH
-WIDTH="25%"
-ALIGN="CENTER"
-VALIGN="TOP"
->full</TH
-></TR
-></THEAD
-><TBODY
-><TR
-><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->&nbsp;</TD
-><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->Dharma</TD
-><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->&nbsp;</TD
-><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->Blake, Chloe, Dharma, Francis</TD
-></TR
-><TR
-><TD
-WIDTH="25%"
-ALIGN="LEFT"
- VALIGN="TOP"
->Blake, Dharma</TD
-><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->&nbsp;</TD
-><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->Francis</TD
-><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->Blake, Chloe, Dharma</TD
-></TR
-><TR
-><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->Chloe, Dharma</TD
-><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->&nbsp;</TD
-><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->Chloe, Francis</TD
-><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->Blake, Dharma</TD
-></TR
-><TR
-><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->Blake, Chloe, Dharma</TD
-><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->&nbsp;</TD
-><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->Elena</TD
-><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->Blake, Chloe, Dharma, Francis</TD
-></TR
-><TR
-><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->&nbsp;</TD
-><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->Blake, Chloe, Elena</TD
-><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->&nbsp;</TD
-><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->Blake, Chloe, Dharma, Elena, Francis</TD
-></TR
-></TBODY
-></TABLE
-><P
-></P
-></DIV
-></DIV
-></DIV
-></DIV
->
 
 The graph illustrates who has signed who's keys. The table shows which keys Alice considers valid based on her trust in the other members of the web. This example assumes that two marginally-trusted keys or one fully-trusted key is needed to validate another key. The maximum path length is three.
 
