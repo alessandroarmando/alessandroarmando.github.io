@@ -293,6 +293,10 @@ The following DAG and table show a web of trust rooted at Alice.
 
 ![DAG](https://www.gnupg.org/gph/en/manual/signatures.jpg)
 
+| marginal trust | full trust            | marginal validity | full validity                 |
+|                | Dharma                |                   | Blake, Chloe, Dharma, Francis |
+| Blake, Dharma  |                       | Francis           | Blake, Chloe, Dharma          |
+
 <DIV
 CLASS="INFORMALTABLE"
 ><P
