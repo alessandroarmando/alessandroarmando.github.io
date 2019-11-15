@@ -287,10 +287,14 @@ The web of trust allows a more elaborate algorithm to be used to validate a key.
 
 The path length, number of marginally trusted keys required, and number of fully trusted keys required may be adjusted. The numbers given above are the default values used by GnuPG.
 
-marginal trust | full trust            | marginal validity | full validity
--------------- | --------------------- | ----------------- | -----------------------------
-               | Dharma                |                   | Blake, Chloe, Dharma, Francis
-Blake, Dharma  |                       | Francis           | Blake, Chloe, Dharma
+marginal trust        | full trust            | marginal validity | full validity
+--------------------- | --------------------- | ----------------- | -----------------------------
+                      | Dharma                |                   | Blake, Chloe, Dharma, Francis
+Blake, Dharma         |                       | Francis           | Blake, Chloe, Dharma
+Chloe, Dharma         |                       | Chloe, Francis    | Blake, Dharma
+Blake, Chloe, Dharma  |                       | Elena             | Blake, Chloe, Dharma, Francis
+                      | Blake, Chloe, Elena   |                   | Blake, Chloe, Dharma, Elena, Francis
+
 
 
 The following DAG and table show a web of trust rooted at Alice. 
