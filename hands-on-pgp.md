@@ -7,10 +7,6 @@ This document aims to be a gentle introduction to PGP.
 The text of next section is taken from the post [OpenPGP, PGP and GPG: What is the difference?](https://www.goanywhere.com/blog/2013/07/18/openpgp-pgp-gpg-difference).
 The rest of the document heavily relies on [The GNU Privacy Handbook](https://www.gnupg.org/gph/en/manual.html).
 
-| Hello | Hello2 |
-|-------|--------|
-| ciao  |  ciao2 |
-
 ## Differences among OpenPGP, PGP and GPG
 
 ### PGP (Pretty Good Privacy)
@@ -291,10 +287,10 @@ The web of trust allows a more elaborate algorithm to be used to validate a key.
 
 The path length, number of marginally trusted keys required, and number of fully trusted keys required may be adjusted. The numbers given above are the default values used by GnuPG.
 
-<!-- marginal trust | full trust            | marginal validity | full validity                 -->
-<!-- -------------- | --------------------- | ----------------- | ----------------------------- -->
-<!--                | Dharma                |                   | Blake, Chloe, Dharma, Francis -->
-<!-- Blake, Dharma  |                       | Francis           | Blake, Chloe, Dharma          -->
+marginal trust | full trust            | marginal validity | full validity
+-------------- | --------------------- | ----------------- | -----------------------------
+               | Dharma                |                   | Blake, Chloe, Dharma, Francis
+Blake, Dharma  |                       | Francis           | Blake, Chloe, Dharma
 
 
 The following DAG and table show a web of trust rooted at Alice. 
