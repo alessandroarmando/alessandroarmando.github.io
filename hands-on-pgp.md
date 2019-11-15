@@ -1,5 +1,4 @@
 --- 
-layout: default
 title: "Hands-on Guide to PGP"
 ---
 
@@ -370,7 +369,7 @@ VALIGN="TOP"
 ><TD
 WIDTH="25%"
 ALIGN="LEFT"
-VALIGN="TOP"
+ VALIGN="TOP"
 >Blake, Dharma</TD
 ><TD
 WIDTH="25%"
