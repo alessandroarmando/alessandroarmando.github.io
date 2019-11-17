@@ -291,7 +291,8 @@ The path length, number of marginally trusted keys required, and number of fully
 
 The following DAG and table show a web of trust rooted at Alice. 
 
-![DAG](https://www.gnupg.org/gph/en/manual/signatures.jpg)
+<!-- ![DAG](https://www.gnupg.org/gph/en/manual/signatures.jpg) -->
+![PGP Web of Trust Example](PGP WoT.png)
 
 marginal trust        | full trust            | marginal validity | full validity
 --------------------- | --------------------- | ----------------- | -----------------------------
