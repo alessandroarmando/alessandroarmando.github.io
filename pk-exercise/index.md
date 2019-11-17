@@ -15,12 +15,23 @@ You realize you need Gen. Garibaldi's public key.
 
 You ask your agents to find it.
 
-After some time an agent come back to you with [this key](gg@gmail.com.pk).
+After some time an agent comes back to you with [this key](gg@gmail.com.pk).
 
-Question:
+Question 1: Assuming this is Garibaldi's public key, where the expedition will sail from?
+  
+A few hours later two agents bring to you two additional keys:
+- [another key](gg@yahoo.com.pk).  
+- [yet another key](gg@protonmail.ch.pk)
 
-* Where the expedition will sail from?
-  - Genova Quinto
-  - Genova Quarto
-  - Genova Nervi
+At this poing you start being suspicious and ask the agents to provide evidence that these keys belong to Gen. Garibaldi.
 
+
+One of the agent comes back some time later with the following sequence of exadecimal characters:
+```
+C222 C65A 8560 6B17 3F5E  CA21 CE55 3575 6DB3 E86E
+```
+claiming to be the fingerprint of Garibaldi's public key.
+
+Question 2: Assuming this is the fingerprint of Garibaldi's public key, where the expedition will sail from?
+
+You are still unconvinced and then decide 
