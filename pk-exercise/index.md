@@ -3,7 +3,7 @@ layout: default
 title: "GPG Hands-on: The Expedition of the Thousand"
 ---
 
-# GPG Hands-on: The Expedition of the Thousand
+# GPG Hands-on: [The Expedition of the Thousand](https://en.wikipedia.org/wiki/Expedition_of_the_Thousand)
 
 You are Camillo Benso (Count of Cavour):
 - [your private key](benso.prk)
