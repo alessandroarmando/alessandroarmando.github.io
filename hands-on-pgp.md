@@ -316,14 +316,13 @@ The following DAG and table show a web of trust rooted at Alice.
 <!-- ![DAG](https://www.gnupg.org/gph/en/manual/signatures.jpg) -->
 ![PGP Web of Trust Example](PGP WoT.png)
 
-marginal trust        | full trust            | marginal validity | full validity
---------------------- | --------------------- | ----------------- | -----------------------------
-                      | Dharma                |                   | Blake, Chloe, Dharma, Francis
-Blake, Dharma         |                       | Francis           | Blake, Chloe, Dharma
-Chloe, Dharma         |                       | Chloe, Francis    | Blake, Dharma
-Blake, Chloe, Dharma  |                       | Elena             | Blake, Chloe, Dharma, Francis
-                      | Blake, Chloe, Elena   |                   | Blake, Chloe, Dharma, Elena, Francis
-
+case | marginal trust        | full trust            | marginal validity | full validity
+ --- | --------------------- | --------------------- | ----------------- | -----------------------------
+1    |                       | Dharma                |                   | Blake, Chloe, Dharma, Francis
+2    | Blake, Dharma         |                       | Francis           | Blake, Chloe, Dharma
+3    | Chloe, Dharma         |                       | Chloe, Francis    | Blake, Dharma
+4    | Blake, Chloe, Dharma  |                       | Elena             | Blake, Chloe, Dharma, Francis
+5    |                       | Blake, Chloe, Elena   |                   | Blake, Chloe, Dharma, Elena, Francis
 
 
 The graph illustrates who has signed who's keys. The table shows which keys Alice considers valid based on her trust in the other members of the web. This example assumes that two marginally-trusted keys or one fully-trusted key is needed to validate another key. The maximum path length is three.
