@@ -15,13 +15,13 @@ You realize you need Gen. Garibaldi's public key.
 
 You ask your agents to find it.
 
-After some time an agent comes back to you with [Garibaldi's public key #1](gg@gmail.com.pk).
+After some time an agent comes back to you with [Garibaldi's public key #1](garibaldi1.puk).
 
 Question 1: Assuming this is Garibaldi's public key, where the expedition will sail from?
   
 A few hours later two agents bring to you two additional keys:
-- [Garibaldi's public key #2](gg@yahoo.com.pk)
-- [Garibaldi's public key #3](gg@protonmail.ch.pk)
+- [Garibaldi's public key #2](garibaldi2.puk)
+- [Garibaldi's public key #3](garibaldi3.puk)
 
 At this point you start being suspicious and ask the agents to provide evidence that these keys belong to Gen. Garibaldi.
 
