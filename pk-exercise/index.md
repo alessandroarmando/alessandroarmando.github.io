@@ -34,4 +34,6 @@ claiming to be the fingerprint of Garibaldi's public key.
 
 Question 2: Assuming this is the fingerprint of Garibaldi's public key, where the expedition will sail from?
 
-You are still unconvinced and then decide 
+You are still unconvinced and then decide to give a closer look to the three public keys brought to you by the agents.
+
+A closer look to [yet another key](gg@protonmail.ch.pk) reveals that...
