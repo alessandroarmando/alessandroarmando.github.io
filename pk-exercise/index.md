@@ -5,7 +5,11 @@ title: "GPG Hands-on: The Expedition of the Thousand"
 
 # GPG Hands-on: The Expedition of the Thousand
 
-You are Camillo Benso (Count of Cavour).  You receive the following three messages apparently from Gen. Garibaldi:
+You are Camillo Benso (Count of Cavour):
+- [your private key](benso.prk)
+- [your public key](benso.puk)
+
+You receive the following three messages apparently from Gen. Garibaldi:
 
 * [Message 1](sailing-off-1.txt.asc)
 * [Message 2](sailing-off-2.txt.asc)
