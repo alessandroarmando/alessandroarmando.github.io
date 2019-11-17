@@ -28,7 +28,7 @@ At this point you start being suspicious and ask the agents to provide evidence 
 
 One of the agent comes back some time later with the following sequence of exadecimal characters:
 ```
-C222 C65A 8560 6B17 3F5E  CA21 CE55 3575 6DB3 E86E
+10DB 9869 9AAE 281F 47F6  F140 5688 E7EA 9DCE F4E6
 ```
 claiming to be the fingerprint of Garibaldi's public key.
 
@@ -36,7 +36,7 @@ Question 2: Assuming this is the fingerprint of Garibaldi's public key, where th
 
 You are still unconvinced and then decide to give a closer look to the three public keys brought to you by the agents.
 
-A closer look to [Garibaldi's public key #3](gg@protonmail.ch.pk) reveals that...
+A closer look to [Garibaldi's public key #3](garibaldi3.puk) reveals that...
 
 You then ask you agents to find Mazzini's public key. After some time they bring the following two keys:
 - [Mazzini's Public Key #1](mazzini1.puk)
