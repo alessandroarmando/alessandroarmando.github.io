@@ -11,9 +11,9 @@ You are Camillo Benso (Count of Cavour):
 
 You receive the following three messages apparently from Gen. Garibaldi:
 
-* [Message 1](sailing-off-1.txt.asc)
-* [Message 2](sailing-off-2.txt.asc)
-* [Message 3](sailing-off-3.txt.asc)
+* [Message 1](sailing-off-1.gpg)
+* [Message 2](sailing-off-2.gpg)
+* [Message 3](sailing-off-3.gpg)
 
 You realize you need Gen. Garibaldi's public key.
 
