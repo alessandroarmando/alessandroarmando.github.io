@@ -24,12 +24,13 @@ After some time an agent comes back to you with
 
 Question 1: Assuming this is Garibaldi's public key, where the expedition will sail from?
   
-A few hours later two agents bring to you two additional keys:
+A few hours later two agents bring to you the following additional keys:
 - [Garibaldi's public key #2](garibaldi2.puk) (KeyID: 10DB98699AAE281F47F6F1405688E7EA9DCEF4E6)
 - [Garibaldi's public key #3](garibaldi3.puk) (KeyID: 5E11681C77285F1E8062B36CAB846700F26773AE)
+- [Mazzini's Public Key #1](mazzini1.puk) (KeyID: 3B5770D995715C098552C368BB349BD6C17CC964)
+- [Mazzini's Public Key #2](mazzini2.puk) (KeyID: 178B5921E9447070E436585D6D82B01D17FD1FD3)
 
 At this point you start being suspicious and ask the agents to provide evidence that these keys belong to Gen. Garibaldi.
-
 
 One of the agent comes back some time later with
 ```
@@ -42,10 +43,6 @@ Question 2: Assuming this is the fingerprint of Garibaldi's public key, where th
 You are still unconvinced and thus decide to give a closer look to the three public keys brought to you by the agents.
 
 By inspecting [Garibaldi's public key #3](garibaldi3.puk) you notice that...
-
-You then ask your agents to find Mazzini's public key. After some time they bring the following two keys:
-- [Mazzini's Public Key #1](mazzini1.puk) (KeyID: 3B5770D995715C098552C368BB349BD6C17CC964)
-- [Mazzini's Public Key #2](mazzini2.puk) (KeyID: 178B5921E9447070E436585D6D82B01D17FD1FD3)
 
 Luckily you met Mazzini last week, you pull his business card from the pocket and you find his public key is printed on it:
 ```
