@@ -20,7 +20,7 @@ You realize you need Gen. Garibaldi's public key.
 You ask your agents to find it.
 
 After some time an agent comes back to you with
-- [Garibaldi's public key certificate #1](garibaldi1.puk) (KeyID: 10DB98699AAE281F47F6F1405688E7EA9DCEF4E6).
+- [Garibaldi's public key #1](garibaldi1.puk) (KeyID: 10DB98699AAE281F47F6F1405688E7EA9DCEF4E6).
 
 Question 1: Assuming this is Garibaldi's public key, where the expedition will sail from?
   
