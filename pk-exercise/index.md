@@ -6,7 +6,7 @@ title: "GPG Hands-on: The Expedition of the Thousand"
 # GPG Hands-on: [The Expedition of the Thousand](https://en.wikipedia.org/wiki/Expedition_of_the_Thousand)
 
 You are Camillo Benso (Count of Cavour):
-- [your private key](benso.prk)
+- [your private key](benso.prk) (Passphrase: "pippo")
 - [your public key](benso.puk)
 
 You receive the following three messages apparently from Gen. Garibaldi:
