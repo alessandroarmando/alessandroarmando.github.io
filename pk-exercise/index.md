@@ -44,7 +44,7 @@ You are still unconvinced and thus decide to give a closer look to the three pub
 
 By inspecting [Garibaldi's public key #3](garibaldi3.puk) you notice that...
 
-Luckily you met Mazzini last week, you pull his business card from the pocket and you find his public key is printed on it:
+Luckily you met Mazzini last week, you pull his business card from the pocket and you find his public key fingerprint printed on it:
 ```
 178B 5921 E944 7070 E436  585D 6D82 B01D 17FD 1FD3
 ```
