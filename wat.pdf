@@ -1,0 +1,102 @@
+\documentclass[12pt]{exam}
+\usepackage{comment}
+\usepackage{url}
+% \usepackage{trees}
+% \usepackage{proof}
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+% \usepackage[latin1]{inputenc}
+\usepackage{boxedminipage}
+\usepackage{listings}
+\usepackage{tikz}
+\graphicspath{{./}{images/}}
+
+
+\newcommand{\mymod}{\!\!\!\mod}
+\newcommand{\vs}[1]{\vspace*{#1ex}}
+\newcommand{\imp}{\supset}
+\newcommand{\liff}{\leftrightarrow}
+\newcommand{\mtc}{\sqcap\!\!\!\!\sqcup}
+\newcommand{\cksquare}{\square\!\!\!\!\!\surd}
+
+\newcommand{\CorsoDiLaurea}{MBA Post-Graduate Studies on Cybersecurity Management}
+\newcommand{\Corso}{Cyber Security Systems}
+
+\newcommand{\Docente}{Prof.~Alessandro Armando}
+\newcommand{\DataEsame}{December 7, 2019}
+
+\cfoot[]{\thepage}
+
+ % \printanswers 
+ % \newenvironment{soluzione}{\begin{boxedminipage}{\linewidth}\rm\textbf{Soluzione.} }{\end{boxedminipage}}
+ % \excludecomment{nosoluzione}
+
+
+ \excludecomment{soluzione}
+ \newenvironment{nosoluzione}{\begin{boxedminipage}{\linewidth}\rm\textbf{Soluzione.}}{\end{boxedminipage}}
+
+\addpoints
+
+\pointname{ points}
+\begin{document}
+
+% \input{cover}
+
+\begin{center}
+  \begin{Large}
+  \begin{tabular}{c}
+    \Large \CorsoDiLaurea\\[2ex]
+    \Huge \Corso\\[.5ex]
+    {\Docente}\\[2ex]
+    \DataEsame
+\end{tabular}
+\end{Large}
+\end{center}
+
+\begin{center}
+  \fbox{\fbox{
+      \begin{minipage}{.7\textwidth}
+        \textbf{Attenzione:} Si risponda alle domande utilizzando lo
+        spazio apposito.  
+% Non è consentito l'utilizzo di libri,
+%         appunti, nè dispositivi elettronici di alcun tipo.  Qualora
+%         fosse necessario più spazio si utilizzi il retro dei fogli.\\
+        % \textbf{Students of the Cybersecurity course must carry out exercises no. 1-5 only.}
+
+        % Tempo per lo svolgimento: 2 ore.
+ \end{minipage}
+}}
+\end{center}
+\vspace{3ex}
+\hbox to \textwidth{Name, Surname:\enspace\hrulefill}
+% \vspace{3ex}
+% \hbox to \textwidth{Matricola:\enspace\hrulefill}
+\vspace{6ex}
+
+\hrule
+\hrule
+\hrule
+
+\vspace{5ex}
+
+\begin{questions}\sl
+
+\input{problemi/crypto-pub-18}\newpage
+\input{problemi/crypto-pub-01-en}\newpage
+% \input{problemi/security-protocols-08-1st-part-esercizi}\newpage
+% \input{problemi/security-protocols-43}\newpage
+% \input{problemi/security-protocols-42}\newpage
+% \input{problemi/websec-14}
+
+\end{questions}
+
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
