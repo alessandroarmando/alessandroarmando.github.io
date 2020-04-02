@@ -57,7 +57,7 @@ Upon creation, each thread executes a *thread function*:
 void* print_cs (void* c) {
  char *pch=(char *)c; // type casting
  while (1)
-  fputc (*pch, stdout);
+	 fputc (*pch, stdout);
  return NULL;
 }
 ```
