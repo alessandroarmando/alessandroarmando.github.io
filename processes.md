@@ -34,14 +34,9 @@ return 0;
 }
 ```
 
-# 2. Using ``fork`` and ``exec``
+# 2. Using ``fork``
 
 Linux provides one function, ``fork``, that makes a child process that is an exact copy of its parent process.
-
-Linux provides another set of functions, the ``exec`` family, that causes a particular process to cease being an instance of one program and to instead become an instance of another program.
-
-To spawn a new process, you first use ``fork`` to make a copy of the current process, then you use ``exec`` to transform one of these processes into an instance of the program you want to spawn.
-
 
 When a program calls ``fork``, a duplicate process, called the child process, is created:
 
@@ -63,6 +58,7 @@ Important:
 Because no process ever has a process ID of zero, this makes it easy for the program whether it is now running as the parent or the child process.
 
 ```
+// 03_fork.c
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -101,15 +97,61 @@ int main() {
 
 ---
 
-## Using the ``exec`` family
+Copile and execute (multiple times) the following program. What do you observe?
+
+```
+// 03_fork_arrows.c
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <unistd.h>
+
+#define N 1000
+
+int main() {
+
+    int child_status;
+    pid_t child_pid;
+    int i;
+
+    printf("The main program has the PID %d.\n\n", getpid());
+    
+    child_pid = fork();
+ 
+    if(child_pid != 0) {
+        printf("This is the parent process with PID %d.\n", getpid());
+        printf("The child process has the PID %d.\n", child_pid);
+	for(i=0;i<N;i++) {
+	  fputc ('-', stdout);
+	  fputc ('>', stdout);
+	  fputc ('\n', stdout);
+	}
+    }
+    else {
+        printf("This is the child process with PID %d.\n", getpid());
+        printf("Its parent process is with PID %d.\n", getppid());
+	for(i=0;i<N;i++) {
+	  fputc ('<', stdout);
+	  fputc ('=', stdout);
+	  fputc ('\n', stdout);
+	}
+    }
+
+	return 0;
+}
+```
+
+
+# 3. Using the ``exec`` family
+
+Linux provides another set of functions, the ``exec`` family, that causes a particular process to cease being an instance of one program and to instead become an instance of another program from the beginning (assuming that the exec call doesn’t encounter an error).
 
 The ``exec`` functions replace the program running in a process with another program.
 
-When a program calls an ``exec`` function, that process immediately ceases executing that
-program and begins executing a new program from the beginning, assuming that the
-exec call doesn’t encounter an error.
+To spawn a new process, you first use ``fork`` to make a copy of the current process, then you use ``exec`` to transform one of these processes into an instance of the program you want to spawn.
 
-## Using ``fork`` and ``exec`` together
+
+# 4. Using ``fork`` and ``exec`` together
 
 ```
 #include <stdio.h>
