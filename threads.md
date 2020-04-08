@@ -119,7 +119,7 @@ Programming with threads is very tricky because most threaded programs are concu
 
 There’s no way to know when the system will schedule one thread to run and when it will run another. One thread might run for a very long time, or the system might switch among threads very quickly.
 
-On a system with multiple processors, the system might even schedule multiple threads to run the same time.
+On a system with multiple processors, the system might even schedule multiple threads to run at the same time.
 
 Debugging a threaded program is difficult because you cannot always easily reproduce the behavior that caused the problem.
 
