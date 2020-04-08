@@ -1,9 +1,9 @@
 --- 
 layout: default
-title: "Calcolatori Elettronici (a.y. 18-19) - Linux Processes"
+title: "Calcolatori Elettronici - Linux Processes"
 ---
 
-# Calcolatori Elettronici (a.y. 18-19) - Linux Processes
+# Calcolatori Elettronici - Linux Processes
 
 
 # 1. Introduction
