@@ -74,8 +74,8 @@ int pthread_create(pthread_t *thread,
 ```
 where the arguments are:
 1. A pointer to the thread ID of the new thread.
-2. A pointer to the thread function. 
-3. A pointer to a thread attribute object. This object controls details of how the thread interacts with the rest of the program. (NULL to set default thread attributes.)
+2. A pointer to a thread attribute object. This object controls details of how the thread interacts with the rest of the 3. A pointer to the thread function. 
+program. (NULL to set default thread attributes.)
 4. A thread argument value of type `void *`. 
 
 The call to `pthread_create` returns immediately, and the original thread continues executing the instructions following the call.
