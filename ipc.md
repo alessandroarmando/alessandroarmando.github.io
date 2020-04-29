@@ -1,9 +1,9 @@
 --- 
 layout: default
-title: "Calcolatori Elettronici (a.y. 2017-2018) - Interprocess Communication (IPC)"
+title: "Calcolatori Elettronici - Interprocess Communication (IPC)"
 ---
 
-# Calcolatori Elettronici (a.y. 2017-2018) - Interprocess Communication (IPC)
+# Calcolatori Elettronici - Interprocess Communication (IPC)
 
 
 # 1. Introduction
