@@ -187,7 +187,6 @@ pub  1024D/9E98BC16 1999-06-04 Blake (Executioner) <blake@cyb.org>
 * A key's fingerprint is verified with the key's owner through a *secure* channel.
 * This may be done in person or over the phone or through any other means as long as you can guarantee that you are communicating with the key's true owner.
 * If the fingerprint you get is the same as the fingerprint the key's owner gets, then you can be sure that you have a correct copy of the key.
-
 * After checking the fingerprint, you may sign the key to validate it.
 * Since key verification is a weak point in public-key cryptography, you should be extremely careful and always check a key's fingerprint with the owner before signing the key.
 
