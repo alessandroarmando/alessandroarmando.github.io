@@ -4,10 +4,10 @@ title: "Hands-on Guide to PGP"
 
 # Introduction to PGP
 This document aims to be a gentle introduction to PGP. 
-The text of next section is taken from the post [OpenPGP, PGP and GPG: What is the difference?](https://www.goanywhere.com/blog/2013/07/18/openpgp-pgp-gpg-difference).
+The text of next section is taken from the post [OpenPGP, PGP and GnuPG: What is the difference?](https://www.goanywhere.com/blog/2013/07/18/openpgp-pgp-gpg-difference).
 The rest of the document heavily relies on [The GNU Privacy Handbook](https://www.gnupg.org/gph/en/manual.html).
 
-## Differences among OpenPGP, PGP and GPG
+## Differences among OpenPGP, PGP and GnuPG
 
 ### PGP (Pretty Good Privacy)
 * The company, PGP Inc., owned the rights to the original PGP encryption software.
@@ -20,15 +20,15 @@ The rest of the document heavily relies on [The GNU Privacy Handbook](https://ww
 * This strategy created an open and competitive environment for PGP encryption tools to thrive.
 * Today, OpenPGP is a standard of PGP that is open-source for public use, and the term can be used to describe any program that supports the OpenPGP system.
 
-### GPG (GNU Privacy Guard)
-* GPG was developed by Werner Koch and released in 1999 as an alternative to what is now Symantec's software suite of encryption tools.
+### GnuPG (GNU Privacy Guard)
+* GnuPG was developed by Werner Koch and released in 1999 as an alternative to what is now Symantec's software suite of encryption tools.
 * It is available as a free software download, and is based on the OpenPGP standards established by the IETF so that it would be interoperable with Symantec's PGP tools as well as OpenPGP standards.
-* Therefore, GPG can open and unencrypt any PGP and OpenPGP standards file.
+* Therefore, GnuPG can open and unencrypt any PGP and OpenPGP standards file.
 
 ### Summary
 * OpenPGP is the IETF-approved standard that describes encryption technologies that use processes that are interoperable with PGP.
 * PGP is a proprietary encryption solution, and the rights to its software are owned by Symantec.
-* GPG is another popular solution that follows the OpenPGP standards to provide an interface for end users to easily encrypt their files.
+* GnuPG is another popular solution that follows the OpenPGP standards to provide an interface for end users to easily encrypt their files.
 
 ## Symmetric encryption with PGP
 
@@ -334,7 +334,7 @@ When computing valid keys in the example, Blake and Dharma's are always consider
 * In the case where Chloe and Dharma are marginally trusted, Chloe's key will be marginally valid since Dharma's key is fully valid. Francis's key, however, will also be considered marginally valid since only a fully valid key can be used to validate other keys, and Dharma's key is the only fully valid key that has been used to sign Francis's key. When marginal trust in Blake is added, Chloe's key becomes fully valid and can then be used to fully validate Francis's key and marginally validate Elena's key. 
 * Lastly, when Blake, Chloe, and Elena are fully trusted, this is still insufficient to validate Geoff's key since the maximum certification path is three, but the path length from Geoff back to Alice is four.
 
-The web of trust model is a flexible approach to the problem of safe public key exchange. It permits you to tune GPG to reflect how you use it. At one extreme you may insist on multiple, short paths from your key to another key K in order to trust it. On the other hand, you may be satisfied with longer paths and perhaps as little as one path from your key to the other key K. Requiring multiple, short paths is a strong guarantee that K belongs to whom your think it does. The price, of course, is that it is more difficult to validate keys since you must personally sign more keys than if you accepted fewer and longer paths.
+The web of trust model is a flexible approach to the problem of safe public key exchange. It permits you to tune GnuPG to reflect how you use it. At one extreme you may insist on multiple, short paths from your key to another key K in order to trust it. On the other hand, you may be satisfied with longer paths and perhaps as little as one path from your key to the other key K. Requiring multiple, short paths is a strong guarantee that K belongs to whom your think it does. The price, of course, is that it is more difficult to validate keys since you must personally sign more keys than if you accepted fewer and longer paths.
 
 
 
