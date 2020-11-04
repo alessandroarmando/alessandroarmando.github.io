@@ -88,10 +88,10 @@ In all cases it is possible to later add additional subkeys for encryption and s
 
 You must also choose a key size, the lifetime of the key (a key that does not expire is adequate for most users), a user ID (Real Name, Comment and Email Address).
 
-Finally PGP needs a passphrase to protect the primary and subordinate private keys that you keep in your possession.
+Finally GnuPG needs a passphrase to protect the primary and subordinate private keys that you keep in your possession.
 
 * There is no limit on the length of a passphrase, and it should be carefully chosen.
-* From the perspective of security, the passphrase to unlock the private key is one of the weakest points in PGP.
+* From the perspective of security, the passphrase to unlock the private key is one of the weakest points in GnuPGP.
 * Ideally, the passphrase should not use words from a dictionary and should mix the case of alphabetic characters as well as use non-alphabetic characters.
 
 
@@ -141,7 +141,7 @@ mPno4fF7SENw+CNZ7nniEvKhuzBG92AvaiHYG1eHAwtXnIYUAhb+SR0JSP6KAQ==
 ```
 
 ### Exercise
-1. You must create a new key pair for personal use. Use your real name and a valid email address when asked to do so by PGP.
+1. You must create a new key pair for personal use. Use your real name and a valid email address when asked to do so by GnuPG.
 2. Choose your own passphrase to protect the private key and do not share it with anyone else!
 3. Export the public key and save it to a file named `*matricola*.puk` in you home directory, where \*matricola\* is your UNIGE id number.
 
