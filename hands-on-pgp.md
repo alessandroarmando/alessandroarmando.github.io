@@ -21,7 +21,7 @@ The rest of the document heavily relies on [The GNU Privacy Handbook](https://ww
 * Today, OpenPGP is a standard of PGP that is open-source for public use, and the term can be used to describe any program that supports the OpenPGP system.
 
 ### GPG (GNU Privacy Guard)
-* GnuPGP was developed by Werner Koch and released in 1999 as an alternative to what is now Symantec's software suite of encryption tools.
+* GPG was developed by Werner Koch and released in 1999 as an alternative to what is now Symantec's software suite of encryption tools.
 * It is available as a free software download, and is based on the OpenPGP standards established by the IETF so that it would be interoperable with Symantec's PGP tools as well as OpenPGP standards.
 * Therefore, GPG can open and unencrypt any PGP and OpenPGP standards file.
 
@@ -33,7 +33,7 @@ The rest of the document heavily relies on [The GNU Privacy Handbook](https://ww
 ## Symmetric encryption with PGP
 
 * You can use a symmetric cipher to encrypt a document.
-* The key used to drive the symmetric cipher is derived from a passphrase supplied when the document is encrypted.
+* The key is derived from a passphrase supplied when the document is encrypted.
 * Symmetric encryption is normally used for securing documents when the passphrase does not need to be communicated to others.
 
 A document can be encrypted with a symmetric cipher by using the `--symmetric` option.
