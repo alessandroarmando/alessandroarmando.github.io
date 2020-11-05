@@ -52,9 +52,9 @@ To recover the original file you can decrypt it by using PGP:
 Enter passphrase: <PASSPHRASE GOES HERE>
 ```
 ### Exercise
-1. Create a file named `secret-message.txt` in your home directory and write the string "All work and no play makes Jack a dull boy.".
-2. Encrypt the file `secret-message.txt` using "Il mattino ha l'oro in bocca." as a passphase.  The encrypted message should be stored in the file `secret-message.enc` in your home directory.
-3. Delete del file `secret-message.txt` from your home directory.
+The instructor will provide a list in alphabetical order of the students attending the lecture. During the exercise, each of you will receive by email a message encrypted (as file attached to the message) by the student that precedes you in the alphabetical order. (The first student alphabetical order will receive the message by the instructor.) To decrypt the message you must use as passphrase the string obtained by concatenating your name and surname (all upcase letters and separated by a single space). 
+
+Add you name and surname at a bottom of the list you have received, encrypt the resulting list by using the name and surname of the student  next to you in the alphabetical order (please use the same format described above) and send the encrypted message as an attachment via email to the student next to you in the alphabetical order. (The last student must consider the instructor as next.)
 
 
 ## Public-key encryption with PGP
