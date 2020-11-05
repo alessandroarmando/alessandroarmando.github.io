@@ -61,10 +61,10 @@ Add you name and surname at a bottom of the list you have received, encrypt the 
 
 ### Generating a new keypair
 
-The command-line option `--gen-key` is used to create a new primary keypair.
+The command-line option `--full-generate-key` is used to create a new primary keypair.
 
 ```
-> gpg --gen-key
+> gpg --full-generate-key
 gpg (GnuPG) 1.4.20; Copyright (C) 2015 Free Software Foundation, Inc.
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
