@@ -140,10 +140,11 @@ mPno4fF7SENw+CNZ7nniEvKhuzBG92AvaiHYG1eHAwtXnIYUAhb+SR0JSP6KAQ==
 -----END PGP PUBLIC KEY BLOCK-----
 ```
 
-### Exercise
+### Exercise - exporting keys
 1. You must create a new key pair for personal use. Use your real name and a valid email address when asked to do so by GnuPG.
 2. Choose your own passphrase to protect the private key and do not share it with anyone else!
-3. Export the public key and save it to a file named `*matricola*.puk` in you home directory, where \*matricola\* is your UNIGE id number.
+3. Export the public key and save it to a file.
+4. Upload your public key to the shared folder that has been communicated to you
 
 ### Importing a public key
 
@@ -214,6 +215,11 @@ sig!       9E98BC16 1999-06-04   [self-signature]
 sig!       BB7576AC 1999-06-04   Alice (Judge) <alice@cyb.org>
 ```
 
+### Exercise - importing, validating and sigining keys
+1. Download the public keys available in the shared folder
+2. Import them your keyring
+3. Validate (how?) the public key of the two students that follow you in the alphabetical order.
+4. Signs these two keys 
 
 
 ### Listing Key Signatures
