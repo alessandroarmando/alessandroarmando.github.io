@@ -144,7 +144,7 @@ mPno4fF7SENw+CNZ7nniEvKhuzBG92AvaiHYG1eHAwtXnIYUAhb+SR0JSP6KAQ==
 1. Create a new key pair for personal use. Use your real name and a valid email address when asked to do so by GnuPG.
 2. Choose your own passphrase to protect the private key and do not share it with anyone else!
 3. Export the public key and save it to a file.
-4. Upload your public key to the shared folder that has been communicated to you
+4. Upload your public key to the shared folder that has been communicated to you by the istructor.
 
 ### Importing a public key
 
@@ -366,6 +366,11 @@ user: "Blake (Executioner) <blake@cyb.org>"
 1024-bit ELG-E key, ID 5C8CBD41, created 1999-06-04 (main key ID 9E98BC16)
 ```
 
+### Exercise - sending and receiving messages
+1. Generate and send some text to the student who is next to you in the alphabetical order in such a way that confidentiality is ensured.
+2. Decrypt the message that you have received from the student that precedes you in the alphabetical order. Can you check the authenticity of the message?
+
+
 ### Making and verifying signatures
 
 * A digital signature certifies and timestamps a document. If the document is subsequently modified in any way, a verification of the signature will fail. 
@@ -394,6 +399,8 @@ gpg: Signature made Fri Jun  4 12:02:38 1999 CDT using DSA key ID BB7576AC
 gpg: Good signature from "Alice (Judge) <alice@cyb.org>"
 ```
 
+
+
 ### Clearsigned documents
 
 * A common use of digital signatures is to sign email messages.
@@ -420,6 +427,10 @@ oCoAoOuqpRqEzr4kOkQqHRLE/b8/Rw2k
 =y6kj
 -----END PGP SIGNATURE-----
 ```
+
+### Exercise - sending and receiving messages
+1. Generate and send some text to the student who is next to you in the alphabetical order in such a way that the recipient can check the authenticity of the text.
+2. Decrypt the message that you have received from the student that precedes you in the alphabetical order. Can you check the authenticity of the message?
 
 ### Detached signatures
 
