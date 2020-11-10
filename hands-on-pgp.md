@@ -257,13 +257,13 @@ In practice trust is subjective. For example, Blake's key is valid to Alice sinc
 
 The web of trust model accounts for this by associating with each public key on your keyring an indication of how much you trust the key's owner. There are four trust levels.
 
-* *unknown* Nothing is known about the owner's judgment in key signing. Keys on your public keyring that you do not own initially have this trust level.
+* *unknown* (q) Nothing is known about the owner's judgment in key signing. Keys on your public keyring that you do not own initially have this trust level.
 
-* *none* The owner is known to improperly sign other keys.
+* *none* (n) The owner is known to improperly sign other keys.
 
-* *marginal* The owner understands the implications of key signing and properly validates keys before signing them.
+* *marginal* (m) The owner understands the implications of key signing and properly validates keys before signing them.
 
-* *full* The owner has an excellent understanding of key signing, and his signature on a key would be as good as your own.
+* *full* (f) The owner has an excellent understanding of key signing, and his signature on a key would be as good as your own.
 
 A key's trust level is something that you alone assign to the key, and it is considered *private* information. It is not packaged with the key when it is exported; it is even stored separately from your keyrings in a separate database.
 
