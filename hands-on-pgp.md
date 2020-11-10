@@ -216,14 +216,14 @@ sig!       BB7576AC 1999-06-04   Alice (Judge) <alice@cyb.org>
 
 ### Exercise - importing, validating and sigining keys
 1. Download the public keys available in the shared folder
-2. Import them your keyring
+2. Import them your into your keyring
 3. Validate (how?) the public key of the two students that follow you in the alphabetical order.
 4. Signs these two keys 
 
 
 ### Listing Key Signatures
 
-The command-line option `--list-sigs` is like to `--list-keys` but it additionally displays also the key signatures.
+The command-line option `--list-sigs` is like to `--list-keys` but it additionally displays the key signatures.
 
 ```
 > gpg --list-sigs
