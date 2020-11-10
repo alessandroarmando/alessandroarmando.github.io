@@ -169,10 +169,9 @@ sub  1024g/5C8CBD41 1999-06-04
 ```
 
 * Once a key is imported it should be validated.
-* PGP uses a powerful and flexible trust model that does not require you to personally validate each key you import.
-* Some keys may need to be personally validated, however.
 * A key is validated by verifying the key's fingerprint.
 * You can even certify the validity of the key by signing it.
+* PGP uses a powerful and flexible trust model that does not require you to personally validate each key you import.
 
 ```
 alice> gpg --edit-key blake@cyb.org
