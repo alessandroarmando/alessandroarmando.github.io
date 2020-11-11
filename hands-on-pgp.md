@@ -217,10 +217,10 @@ sig!       BB7576AC 1999-06-04   Alice (Judge) <alice@cyb.org>
 ```
 
 ### Exercise - importing, validating and sigining keys
-1. Download the public keys available in the shared folder
+1. Download the public keys of the people in your group from the shared folder
 2. Import them your into your keyring
-3. Validate (how?) the public key of the two students that follow you in the alphabetical order.
-4. Signs these two keys 
+3. Validate (how?) the public keys.
+4. Signs the keys 
 
 
 ### Listing Key Signatures
