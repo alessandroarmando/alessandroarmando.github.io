@@ -55,9 +55,9 @@ Enter passphrase: <PASSPHRASE GOES HERE>
 ### Exercise - symmetric encryption
 As a preliminary step we will create a list of the students attending the lecture. (The istructor will give you instructions.) 
 
-During the exercise, each of you will receive by email a message encrypted (as an attachment) by the student that precedes you in the list. (The first student alphabetical order will receive the message by the instructor.) To decrypt the message you must use as passphrase the string obtained by concatenating your name and surname (all upcase letters and separated by a single space).
+During the exercise, each of you will receive by email a message encrypted (as an attachment) by the student that precedes you in the list. (The first student in each group will receive the message by the instructor.) To decrypt the message you must use as passphrase the string obtained by concatenating the name and surname of the person from whom you have received the message (all upcase letters and separated by a single space).
 
-Add you name and surname at a bottom of the list you have received, encrypt the resulting list by using the name and surname of the student  next to you in the list (please use the same format described above) and send by email the encrypted message as an attachment to the student that follows you in the list. (The last student must consider the instructor as next.)
+Add you name and surname at a bottom of the list you have received, encrypt the resulting list by using your name and surname (please use the same format described above) and send by email the encrypted message as an attachment to the student that follows you in the list. (The last student must consider the instructor as next.)
 
 
 ## Public-key encryption with PGP
