@@ -9,6 +9,8 @@ You are Camillo Benso (Count of Cavour):
 - [your private key](benso.prk) (Passphrase: "pippo")
 - [your public key](benso.puk)
 
+Note: After importing the private key you must tell GPG that you trust these keys.  After all, since here you are impersonating the Count of Cavour, these are your keys. Use the ``gpg --edit-key`` command and set the trust for this key to ``ultimate``.
+
 You receive the following three messages apparently from Gen. Garibaldi:
 
 * [Message 1](sailing-off-1.gpg)
@@ -29,6 +31,8 @@ A few hours later two agents bring to you the following additional keys:
 - [Garibaldi's public key #3](garibaldi3.puk) (KeyID: 5E11681C77285F1E8062B36CAB846700F26773AE)
 - [Mazzini's Public Key #1](mazzini1.puk) (KeyID: 3B5770D995715C098552C368BB349BD6C17CC964)
 - [Mazzini's Public Key #2](mazzini2.puk) (KeyID: 178B5921E9447070E436585D6D82B01D17FD1FD3)
+
+You import them into you key ring.
 
 At this point you start being suspicious and ask the agents to provide evidence that these keys belong to Gen. Garibaldi.
 
