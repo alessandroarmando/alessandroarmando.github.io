@@ -9,7 +9,7 @@ You are Camillo Benso (Count of Cavour):
 - [your private key](benso.prk) (Passphrase: "pippo")
 - [your public key](benso.puk)
 
-Note: After importing the private key you must tell GPG that you trust these keys.  After all, since here you are impersonating the Count of Cavour, these are your keys. Use the ``gpg --edit-key`` command and set the trust for this key to ``ultimate``.
+Note: After importing the private key you must tell GPG that you trust these keys.  After all, since here you are impersonating the Count of Cavour, these are your keys. Use the `gpg --edit-key` command and set the trust for this key to `ultimate`.
 
 You receive the following three messages apparently from Gen. Garibaldi:
 
