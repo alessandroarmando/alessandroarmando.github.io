@@ -51,10 +51,10 @@ To recover the original file you can decrypt it by using PGP:
 > gpg --output doc.txt --decrypt doc.gpg
 Enter passphrase: <PASSPHRASE GOES HERE>
 ```
-### Exercise - symmetric encryption
-The instructor will provide a list in alphabetical order of the students attending the lecture. During the exercise, each of you will receive by email a message encrypted (as attachment) by the student that precedes you in the alphabetical order. (The first student alphabetical order will receive the message by the instructor.) To decrypt the message you must use as passphrase the string obtained by concatenating your name and surname (all upcase letters and separated by a single space). 
+<!-- ### Exercise - symmetric encryption -->
+<!-- The instructor will provide a list in alphabetical order of the students attending the lecture. During the exercise, each of you will receive by email a message encrypted (as attachment) by the student that precedes you in the alphabetical order. (The first student alphabetical order will receive the message by the instructor.) To decrypt the message you must use as passphrase the string obtained by concatenating your name and surname (all upcase letters and separated by a single space).  -->
 
-Add you name and surname at a bottom of the list you have received, encrypt the resulting list by using the name and surname of the student  next to you in the alphabetical order (please use the same format described above) and send by email the encrypted message as an attachment to the student next to you in the alphabetical order. (The last student must consider the instructor as next.)
+<!-- Add you name and surname at a bottom of the list you have received, encrypt the resulting list by using the name and surname of the student  next to you in the alphabetical order (please use the same format described above) and send by email the encrypted message as an attachment to the student next to you in the alphabetical order. (The last student must consider the instructor as next.) -->
 
 
 ## Public-key encryption with PGP
