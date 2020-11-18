@@ -36,7 +36,7 @@ You import them into you key ring.
 
 At this point you start being suspicious and ask the agents to provide evidence that these keys belong to Gen. Garibaldi.
 
-One of the agent comes back some time later with
+Some time later an agent comes back with
 ```
 10DB 9869 9AAE 281F 47F6  F140 5688 E7EA 9DCE F4E6
 ```
