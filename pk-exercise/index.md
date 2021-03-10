@@ -22,12 +22,12 @@ You realize you need Gen. Garibaldi's public key.
 You ask your agents to find it.
 
 After some time an agent comes back to you with
-- [Garibaldi's public key #1](garibaldi1.puk) (KeyID: 10DB98699AAE281F47F6F1405688E7EA9DCEF4E6).
+- [Garibaldi's public key #1](garibaldi1.puk) (KeyID: BCBDD7FE165F15A4204838C1777F5AF2ECE6C44F).
 
 Question 1: Assuming this is Garibaldi's public key, where the expedition will sail from?
   
 A few hours later two agents bring to you the following additional keys:
-- [Garibaldi's public key #2](garibaldi2.puk) (KeyID: BCBDD7FE165F15A4204838C1777F5AF2ECE6C44F)
+- [Garibaldi's public key #2](garibaldi2.puk) (KeyID: 10DB98699AAE281F47F6F1405688E7EA9DCEF4E6)
 - [Garibaldi's public key #3](garibaldi3.puk) (KeyID: 5E11681C77285F1E8062B36CAB846700F26773AE)
 - [Mazzini's Public Key #1](mazzini1.puk) (KeyID: 3B5770D995715C098552C368BB349BD6C17CC964)
 - [Mazzini's Public Key #2](mazzini2.puk) (KeyID: 178B5921E9447070E436585D6D82B01D17FD1FD3)
