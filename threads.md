@@ -54,11 +54,12 @@ Upon creation, each thread executes a *thread function*:
 * This is an ordinary function that contains the code that the thread should run.
 * Thread functions take a single parameter, of type `void *` and have a `void *` return type.  For example
 ```
-void* print_cs (void* c) {
- char *pch=(char *)c; // type casting
- while (1)
-	 fputc (*pch, stdout);
- return NULL;
+void* print_xs (void* c) {
+  char *pch=(char *)c; // type casting
+  int i;
+  for(i=0;i<N;i++)
+    fputc (*pch, stdout);
+  return NULL;
 }
 ```
 * When the thread function returns, the thread exits.
@@ -86,15 +87,16 @@ Linux schedules both threads asynchronously, and your program MUST NOT rely on t
 
 ```
 int main () {
-    pthread_t thread_id;
-    char ch='x';
-    char *pchar=&ch;
-
-    pthread_create(&thread_id, NULL, &print_cs, pchar);
-
-    while (1)
-        fputc ('.', stdout);
-    return 0;
+  int i;
+  pthread_t thread_id;
+  char ch='x';
+  char *pchar=&ch;
+  
+  pthread_create(&thread_id, NULL, &print_xs, pchar);
+  
+  for(i=0;i<N;i++)
+    fputc ('.', stdout);
+  return 0;
 }
 ```
 
