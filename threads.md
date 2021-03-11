@@ -103,7 +103,7 @@ The complete program is available [here](code/thread_create.c).  It creates a th
 
 The program can be compiled and link using the following command:
 ```
-% gcc -o thread-create thread-create.c -lpthread
+% gcc -o thread_create thread_create.c -lpthread
 ```
 
 ### 2.3 Joining Threads
