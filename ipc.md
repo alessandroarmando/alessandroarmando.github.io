@@ -87,8 +87,7 @@ int shmget(key_t key, size_t size, int shmflg);
 where
 * `key` is an integer key that specifies which segment to create.
 Unrelated processes can access the same shared segment by specifying the same key
-value. If other processes choose the same fixed key, then a conflict arises. Using the special constant IPC_PRIVATE as the key value guaran-
-tees that a brand new memory segment is created.
+value. If other processes choose the same fixed key, then a conflict arises. Using the special constant IPC_PRIVATE as the key value guarantees that a brand new memory segment is created.
 * `size` specifies the number of bytes in the segment. Because segments are allocated using pages, the number of actually allocated bytes is rounded up
 to an integral multiple of the page size.
 * `shmflg` specifies options (usually expressed as bitwise OR of predefined flag values).
