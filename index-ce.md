@@ -1,9 +1,9 @@
 --- 
 layout: default
-title: "Calcolatori Elettronici: Hands-on material"
+title: "Sistemi Operativi: Hands-on material"
 ---
 
-# Calcolatori Elettronici: Hands-on material
+# Sistemi Operativi: Hands-on material
 
 * [Linux Processes](processes)
 * [Linux Threads](threads)
