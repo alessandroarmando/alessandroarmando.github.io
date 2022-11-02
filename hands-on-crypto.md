@@ -21,4 +21,5 @@ One-time pad (Vernam Cipher) is an unbreakable type of encryption (unconditional
 
 Reusing the key leads to disaster.  Let's see why (and how) the plaintext and the key can be recovered if the key is reused.
 
-* [xortool.py](https://github.com/hellman/xortool): A tool to do some xor analysis
+* [xortool.py](https://github.com/hellman/xortool), (semi)automated xor analysis
+* [MTP](https://github.com/CameronLonsdale/MTP) uses automated cryptanalysis to present a partial decryption which can be solved interactively
