@@ -13,7 +13,7 @@ Examples:
 Properties of the ASCII encoding:
 - If x is (the ASCII code of) a lower case letter, then x+' ' is the (the ASCII code of) the corresponding upper case letter.  For instance, 'a'+' ' = 'A', 'b'+' ' = 'B', ...
 - Dually, if x is (the ASCII code of) an upper case letter, then x+' ' is the (the ASCII code of) the corresponding lower case letter.  For instance, 'A'+' ' = 'a', 'B'+' ' = 'b', ...
-- The xor of two alfanumeric characters is likely to be a special character
+- The xor of two alfanumeric characters is a special character with high probability.
 
 # Strengh and weakness of One-time Pads (Vernam Cipher)
 
