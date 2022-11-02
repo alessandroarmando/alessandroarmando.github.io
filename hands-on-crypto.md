@@ -2,6 +2,10 @@
 title: "Hands-on Guide to Cryptography"
 ---
 
+# ASCII Encoding
+![ASCII Table](USASCII_code_chart.png "ASCII Table")
+
+
 # Strengh and weakness of One-time Pads (Vernam Cipher)
 
 Let “Dog” and “Cat” be two messages that we encrypt with the same key K = “abc”.
