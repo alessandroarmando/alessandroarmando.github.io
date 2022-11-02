@@ -20,7 +20,7 @@ Examples:
 
 One-time pad (Vernam Cipher) is an unbreakable type of encryption (unconditional security) but it requires the use of a *single-use* pre-shared key that is not smaller than the message being encrypted.
 
-Reusing the key leads to disaster.  Let's see why (and how) the plaintext and the key can be recovered if the key is reused.
+Reusing the key is recipe to disaster.  Let's see why (and how) the plaintext and the key can be recovered if the key is reused.
 
 * [xortool.py](https://github.com/hellman/xortool), (semi)automated xor analysis
 * [MTP](https://github.com/CameronLonsdale/MTP) interactive cryptanalysis
