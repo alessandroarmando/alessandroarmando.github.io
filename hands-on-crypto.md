@@ -5,6 +5,15 @@ title: "Hands-on Guide to Cryptography"
 # ASCII Encoding
 ![ASCII Table](USASCII_code_chart.png "ASCII Table")
 
+Examples:
+
+- 'a' = (61)16 = (0110 0001)2
+- 'A' = (41)16 = (0100 0001)2
+
+Properties of the ASCII encoding:
+- If x is (the ASCII code of) a lower case letter, then x+' ' is the (the ASCII code of) the corresponding upper case letter.  For instance, 'a'+' ' = 'A', 'b'+' ' = 'B', ...
+- Dually, if x is (the ASCII code of) an upper case letter, then x+' ' is the (the ASCII code of) the corresponding lower case letter.  For instance, 'A'+' ' = 'a', 'B'+' ' = 'b', ...
+- The xor of two alfanumeric characters is likely to be a special character
 
 # Strengh and weakness of One-time Pads (Vernam Cipher)
 
