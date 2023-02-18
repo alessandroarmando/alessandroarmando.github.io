@@ -46,7 +46,7 @@ Question 2: Assuming this is the fingerprint of Garibaldi's public key, where th
 
 You are still unconvinced and thus decide to give a closer look to the public keys brought to you by the agents.
 
-You recall you met Garibaldi last week. You pull his business card from the pocket and you find his public key fingerprint printed on it:
+You recall you met Mazzini last week. You pull his business card from the pocket and you find his public key fingerprint printed on it:
 ```
 260F498B4E3F72EF9AE273518B7C2EF6CFEBA5A0
 ```
