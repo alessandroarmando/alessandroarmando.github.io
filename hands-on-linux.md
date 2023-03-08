@@ -27,6 +27,14 @@ where `bandit.labs.overthewire.org` is the address of the remote host, `-p 2220`
 
 You can create a local, disposable copy of Linux by using the virtualization technology.  Many virtualization solutions are available today, the most prominent being [VMware](https://www.vmware.com) and [VirtualBox](https://www.virtualbox.org/).
 
+### 1.4 Linux on MacOS
+
+Just open a terminal.
+
+### 1.5 Linux on Window 11
+
+See [Installare Linux in Windows con WSL](https://learn.microsoft.com/it-it/windows/wsl/install) (in Italian) or [Install Ubuntu on WSL2 on Windows 10](https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10#1-overview) (in English).
+
 ## 2. Basic Linux shell commands
 
 Learn to use and play with the following commands:
