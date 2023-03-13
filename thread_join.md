@@ -1,5 +1,8 @@
 *Key Question:* What happens is the main terminates before the newly created thread?
 
+The main thread (which runs the main function) creates the thread parameter structures as local variables, and then passes pointers to these structures to the threads it creates.
+If `main` finishes executing before the child thread is done, the memory containing the thread parameter structures will be deallocated while the other thread is still accessing it!
+
 One solution is to force main to wait until the thread is done.
 
 What we need is a function that waits for a thread to finish.
